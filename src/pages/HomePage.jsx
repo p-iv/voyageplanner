@@ -15,7 +15,7 @@ function HomePage() {
           itineraries, and manage your travel schedule all in one place.
         </h2>
 
-        <Link to="/login" className="cta">
+        <Link to="/app" className="cta">
           Plan Your Trip Now
         </Link>
       </section>
