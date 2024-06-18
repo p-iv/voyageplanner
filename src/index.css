@@ -51,7 +51,7 @@ textarea {
 
 input:focus {
   outline: none;
-  background-color: #fff;
+  background-color: var(--color-light-1);
 }
 
 .cta:link,

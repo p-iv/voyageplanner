@@ -1,0 +1,31 @@
+.destinationlist {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  text-align: center;
+  align-items: center;
+}
+.destinationlist input {
+  width: 40rem;
+  background-color: var(--color-light-1);
+  border-bottom: 2px solid var(--color-light-2);
+  margin-top: 2rem;
+}
+.autocompletelist {
+  min-width: 40rem;
+  background-color: var(--color-light-1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.yourdestination {
+  margin-top: 4rem;
+}
+.yourdestination h2 {
+  margin-bottom: 2rem;
+  font-size: 1.7rem;
+}
+.destinationlist h1 {
+  font-size: 2.5rem;
+}
