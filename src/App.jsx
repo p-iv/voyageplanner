@@ -3,9 +3,10 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import SpinnerFullPage from "./UI/SpinnerFullPage";
 import DestinationList from "./components/DestinationList";
+import Destination from "./components/Destination";
 import AttractionsList from "./components/AttractionsList";
 import Schedule from "./components/Schedule";
-import { AutocompleteProvider } from "./context/AutocompleteContext";
+import { DestinationProvider } from "./context/DestinationContext";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Product = lazy(() => import("./pages/Product"));
@@ -16,7 +17,7 @@ const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 function App() {
   return (
-    <AutocompleteProvider>
+    <DestinationProvider>
       <BrowserRouter>
         <Suspense fallback={<SpinnerFullPage />}>
           <Routes>
@@ -27,6 +28,7 @@ function App() {
             <Route path="/app" element={<AppLayout />}>
               <Route index element={<Navigate replace to="destination" />} />
               <Route path="destination" element={<DestinationList />} />
+              <Route path="destination/:id" element={<Destination />} />
               <Route path="attractions" element={<AttractionsList />} />
               <Route path="schedule" element={<Schedule />} />
             </Route>
@@ -34,7 +36,7 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-    </AutocompleteProvider>
+    </DestinationProvider>
   );
 }
 

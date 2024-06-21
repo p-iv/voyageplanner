@@ -1,15 +1,13 @@
 import { useState } from "react";
-import { useAutoComplete } from "../context/AutocompleteContext";
+import { useDestination } from "../context/DestinationContext";
 import AutocompleteItem from "./AutocompleteItem";
 import styles from "./DestinationList.module.css";
 import { Button } from "antd";
 
 function DestinationList() {
-  const { dispatch, autocomplete } = useAutoComplete();
-  const [chosenDestination, setChosenDestination] = useState("");
-  const [query, setQuery] = useState("");
+  const { dispatch, autocomplete } = useDestination();
 
-  console.log(chosenDestination);
+  const [query, setQuery] = useState("");
 
   function handleChange(e) {
     setQuery(e.target.value);
@@ -34,20 +32,11 @@ function DestinationList() {
             <AutocompleteItem
               dispatch={dispatch}
               setQuery={setQuery}
-              setChosenDestination={setChosenDestination}
               value={value}
               key={value.place_id}
             />
           ))}
         </ul>
-      )}
-      {!chosenDestination ? (
-        ""
-      ) : (
-        <div className={styles.yourdestination}>
-          <h2>Your Destination: {chosenDestination}</h2>
-          <Button type="primary">Next Step</Button>
-        </div>
       )}
     </div>
   );

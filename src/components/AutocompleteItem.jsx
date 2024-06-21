@@ -1,19 +1,25 @@
 import { SearchOutlined } from "@ant-design/icons";
 import styles from "./AutocompleteItem.module.css";
+import { Link } from "react-router-dom";
 
-function AutocompleteItem({ value, setChosenDestination, setQuery, dispatch }) {
-  const { description } = value;
+function AutocompleteItem({ value, setQuery, dispatch }) {
+  const { description, place_id } = value;
 
   function handleClick() {
-    setChosenDestination(description);
     setQuery(() => "");
     dispatch({ type: "query/entered", payload: "" });
   }
   return (
-    <div className={styles.autocomleteitem} onClick={handleClick}>
-      <SearchOutlined />
-      <h3>{description}</h3>
-    </div>
+    <li>
+      <Link
+        className={styles.autocomleteitem}
+        onClick={handleClick}
+        to={`${place_id}`}
+      >
+        <SearchOutlined />
+        <h3>{description}</h3>
+      </Link>
+    </li>
   );
 }
 
