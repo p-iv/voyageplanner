@@ -1,0 +1,12 @@
+.image {
+  margin: 0;
+  height: 30rem;
+  background: #364d79;
+  width: 100%;
+}
+.imagecontainer {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDestination } from "../context/DestinationContext";
 import AutocompleteItem from "./AutocompleteItem";
 import styles from "./DestinationList.module.css";
-import { Button } from "antd";
 
 function DestinationList() {
   const { dispatch, autocomplete } = useDestination();
