@@ -5,7 +5,7 @@ import styles from "./DestinationImageCarousel.module.css";
 function DestinationImageCarousel({ photos }) {
   if (photos === undefined) return;
   return (
-    <Carousel className={styles.carousel} arrows infinite={false}>
+    <Carousel className={styles.carousel} arrows infinite={true}>
       {photos.map((photo) => (
         <DestinationImage
           key={photo.photo_reference}
