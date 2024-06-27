@@ -1,14 +1,14 @@
 import styles from "./AppLayout.module.css";
 import AppNav from "../components/AppNav";
 import SideBar from "../components/SideBar";
-import Map from "../components/Map";
+import MapComponent from "../components/MapComponent";
 
 function AppLayout() {
   return (
     <main className={styles.app}>
       <AppNav />
       <SideBar />
-      <Map />
+      <MapComponent />
     </main>
   );
 }

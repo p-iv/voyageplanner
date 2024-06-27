@@ -11,6 +11,7 @@ function Destination() {
   const { getDestination, currentDestination, isLoading, getLocation } =
     useDestination();
   const photos = currentDestination.photos;
+
   useEffect(
     function () {
       getDestination(id);
@@ -18,7 +19,6 @@ function Destination() {
     },
     [id]
   );
-  console.log(currentDestination);
 
   return (
     <div className={styles.destination}>

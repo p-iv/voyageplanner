@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-const API_KEY = "AIzaSyCOxyyTfRJfz2oOz-DLbzwLWFGMYjnuboE";
+const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 
 const DestinationContext = createContext();
 
@@ -10,7 +10,7 @@ const initialState = {
   isLoading: false,
   error: "",
   currentDestination: {},
-  mapLocation: [],
+  mapLocation: {},
 };
 
 function reducer(state, action) {
@@ -108,10 +108,7 @@ function DestinationProvider({ children }) {
       const data = await res.json();
       dispatch({
         type: "location/loaded",
-        payload: [
-          data.result.geometry.location.lat,
-          data.result.geometry.location.lng,
-        ],
+        payload: data.result.geometry.location,
       });
     } catch {
       dispatch({
