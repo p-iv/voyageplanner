@@ -1,10 +1,16 @@
-.image {
+.destinationImage {
   margin: 0;
   height: 30rem;
   background: #364d79;
   width: 100%;
 }
-.imagecontainer {
+.attractionImage {
+  margin: 0;
+  height: 30rem;
+  background: #364d79;
+  width: 100%;
+}
+.imageContainer {
   display: flex;
   justify-content: center;
 

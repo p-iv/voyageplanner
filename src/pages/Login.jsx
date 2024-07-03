@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
 import PageNav from "../components/PageNav";
-import Button from "../components/Button";
+import Button from "../components/UI/Button";
 
 export default function Login() {
   const [email, setEmail] = useState("jack@example.com");
