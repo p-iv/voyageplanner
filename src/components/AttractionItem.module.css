@@ -8,5 +8,19 @@
   border-radius: 2rem;
   gap: 2rem;
   padding: 2rem;
-  width: 100%;
+  width: 80%;
+}
+.name img {
+  width: 3rem;
+}
+.name h2 {
+  font-size: 2.2rem;
+}
+.rating {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+.rating p {
+  font-size: 1.5rem;
 }

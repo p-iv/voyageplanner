@@ -2,8 +2,7 @@ import { Carousel } from "antd";
 import Image from "./UI/Image";
 import styles from "./DestinationImageCarousel.module.css";
 
-const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
-
+const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 function DestinationImageCarousel({ photos }) {
   if (photos === undefined) return;
   return (

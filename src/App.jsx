@@ -8,6 +8,7 @@ import Attractions from "./components/Attractions";
 import Schedule from "./components/Schedule";
 import { DestinationProvider } from "./context/DestinationContext";
 import { PlaceProvider } from "./context/PlaceContext";
+import Attraction from "./components/Attraction";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Product = lazy(() => import("./pages/Product"));
@@ -30,8 +31,15 @@ function App() {
               <Route path="/app" element={<AppLayout />}>
                 <Route index element={<Navigate replace to="destination" />} />
                 <Route path="destination" element={<DestinationList />} />
-                <Route path="destination/:id" element={<Destination />} />
+                <Route
+                  path="destination/:destinationId"
+                  element={<Destination />}
+                />
                 <Route path="attractions" element={<Attractions />} />
+                <Route
+                  path="attractions/:attractionId"
+                  element={<Attraction />}
+                />
                 <Route path="schedule" element={<Schedule />} />
               </Route>
               <Route path="*" element={<PageNotFound />} />

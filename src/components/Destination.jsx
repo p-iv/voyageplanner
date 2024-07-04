@@ -8,17 +8,17 @@ import DestinationImageCarousel from "./DestinationImageCarousel";
 import { Button } from "antd";
 
 function Destination() {
-  const { id } = useParams();
+  const { destinationId } = useParams();
   const { getDestination, currentDestination, isLoading, getLocation } =
     useDestination();
   const photos = currentDestination.photos;
 
   useEffect(
     function () {
-      getDestination(id);
-      getLocation(id);
+      getDestination(destinationId);
+      getLocation(destinationId);
     },
-    [id]
+    [destinationId]
   );
 
   return (

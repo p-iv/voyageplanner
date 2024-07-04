@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 
 const PlaceContext = createContext();
 
@@ -25,6 +25,13 @@ function reducer(state, action) {
         places: action.payload,
         isLoading: false,
       };
+    case "place/loaded":
+      return {
+        ...state,
+        currentPlace: action.payload,
+        isLoading: false,
+      };
+    case "place/selected":
     case "location/got":
       return {
         ...state,
@@ -54,7 +61,7 @@ function PlaceProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat}%2C${location.lng}&radius=4000&type=restaurant&key=${API_KEY}`
+            `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat}%2C${location.lng}&radius=4000&type=tourist_attraction&key=${API_KEY}`
           );
           const data = await res.json();
           dispatch({ type: "places/loaded", payload: data.results });
@@ -71,8 +78,20 @@ function PlaceProvider({ children }) {
     dispatch({ type: "location/got", payload: location });
   }
 
+  async function getPlace(id) {
+    try {
+      const res = await fetch(
+        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&key=${API_KEY}`
+      );
+      const data = await res.json();
+      dispatch({ type: "place/loaded", payload: data.result });
+    } catch {
+      dispatch({ type: "rejected", payload: "Something went wrong" });
+    }
+  }
+  console.log(currentPlace);
   return (
-    <PlaceContext.Provider value={{ getLocation, places }}>
+    <PlaceContext.Provider value={{ getLocation, places, getPlace }}>
       {children}
     </PlaceContext.Provider>
   );

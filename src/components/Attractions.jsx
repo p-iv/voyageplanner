@@ -9,8 +9,6 @@ function AttractionsList() {
   const { getLocation, places } = usePlace();
   const { mapLocation } = useDestination();
 
-  console.log(places);
-
   useEffect(
     function () {
       if (Object.keys(mapLocation)) getLocation(mapLocation);

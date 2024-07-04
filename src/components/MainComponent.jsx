@@ -12,4 +12,4 @@ function MainComponent() {
   );
 }
 
-export default SideBar;
+export default MainComponent;

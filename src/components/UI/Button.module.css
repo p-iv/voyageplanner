@@ -12,7 +12,7 @@
 .primary {
   font-weight: 700;
   background-color: var(--brand-color);
-  color: var(--color-dark--1);
+  color: var(--color-light-1);
 }
 
 .back {
