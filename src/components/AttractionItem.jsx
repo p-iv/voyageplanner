@@ -10,7 +10,7 @@ function AttractionItem({ place }) {
   const { photos, name, place_id, icon, rating } = place;
   return (
     <li className={styles.attraction}>
-      {photos.map((photo) => (
+      {photos?.map((photo) => (
         <Image
           source={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=${photo.photo_reference}&key=${API_KEY}`}
           alt_text="place image"

@@ -61,7 +61,7 @@ function PlaceProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat}%2C${location.lng}&radius=4000&type=tourist_attraction&key=${API_KEY}`
+            `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat}%2C${location.lng}&radius=10000&type=tourist_attraction&key=${API_KEY}`
           );
           const data = await res.json();
           dispatch({ type: "places/loaded", payload: data.results });
@@ -91,7 +91,7 @@ function PlaceProvider({ children }) {
   }
   console.log(currentPlace);
   return (
-    <PlaceContext.Provider value={{ getLocation, places, getPlace }}>
+    <PlaceContext.Provider value={{ getLocation, places, getPlace, isLoading }}>
       {children}
     </PlaceContext.Provider>
   );
