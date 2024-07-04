@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import PlannerNav from "./PlannerNav";
-import styles from "./SideBar.module.css";
+import styles from "./MainComponent.module.css";
 
-function SideBar() {
+function MainComponent() {
   return (
     <div className={styles.sidebar}>
       <PlannerNav />

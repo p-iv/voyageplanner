@@ -21,7 +21,7 @@ function MapComponent() {
   );
 
   return (
-    <APIProvider apiKey={"AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI"}>
+    <APIProvider apiKey={process.env.GOOGLE_MAPS_API_KEY}>
       <div className={styles.mapContainer}>
         <Map
           defaultZoom={11}

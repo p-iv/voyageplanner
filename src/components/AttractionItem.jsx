@@ -1,7 +1,7 @@
 import styles from "./AttractionItem.module.css";
 import Image from "../components/UI/Image";
 
-const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 function AttractionItem({ place }) {
   return (

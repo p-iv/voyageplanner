@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 const DestinationContext = createContext();
 

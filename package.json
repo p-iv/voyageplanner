@@ -17,6 +17,7 @@
     "@vis.gl/react-google-maps": "^1.1.0",
     "antd": "^5.18.1",
     "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
     "gh-pages": "^6.1.1",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",

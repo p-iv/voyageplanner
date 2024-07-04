@@ -6,6 +6,7 @@ import { useDestination } from "../context/DestinationContext";
 
 import DestinationImageCarousel from "./DestinationImageCarousel";
 import { Button } from "antd";
+
 function Destination() {
   const { id } = useParams();
   const { getDestination, currentDestination, isLoading, getLocation } =
