@@ -66,7 +66,7 @@ function DestinationProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${query}&types=(cities)&key=${API_KEY}`
+            `https://voyageplanner-server.vercel.app/autocomplete?input=${query}`
           );
           const data = await res.json();
           dispatch({ type: "autocomplete/loaded", payload: data.predictions });

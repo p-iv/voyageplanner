@@ -7,7 +7,7 @@ const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.get("/autocomplete", async (req, res) => {
-  const input = "wa";
+  const input = req.query.input;
   try {
     response = await axios.get(
       `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=(cities)&key=${API_KEY}`
