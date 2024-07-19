@@ -1,7 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
-
 const DestinationContext = createContext();
 
 const initialState = {
