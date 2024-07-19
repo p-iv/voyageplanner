@@ -4,6 +4,8 @@ const app = express();
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
 app.get("/autocomplete", async (req, res) => {
   const input = "wa";
   try {
