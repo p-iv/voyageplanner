@@ -61,7 +61,7 @@ function PlaceProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `http://localhost:3001/places?lat=${location.lat}&lng=${location.lng}`
+            `https://voyageplanner-server.vercel.app/places?lat=${location.lat}&lng=${location.lng}`
           );
           const data = await res.json();
           dispatch({ type: "places/loaded", payload: data.results });
@@ -80,7 +80,9 @@ function PlaceProvider({ children }) {
 
   async function getPlace(id) {
     try {
-      const res = await fetch(`http://localhost:3001/place?id=${id}`);
+      const res = await fetch(
+        `https://voyageplanner-server.vercel.app/place?id=${id}`
+      );
       const data = await res.json();
       dispatch({ type: "place/loaded", payload: data.result });
     } catch {
