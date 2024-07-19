@@ -8,6 +8,7 @@ app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.get("/autocomplete", async (req, res) => {
   const input = req.query.input;
+  console.log(input);
   try {
     response = await axios.get(
       `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&types=(cities)&key=${API_KEY}`

@@ -66,7 +66,7 @@ function DestinationProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `https://voyageplanner-server.vercel.app/autocomplete?input=${query}`
+            `http://localhost:3001/autocomplete?input=${query}`
           );
           const data = await res.json();
           dispatch({ type: "autocomplete/loaded", payload: data.predictions });
