@@ -66,7 +66,7 @@ function DestinationProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `http://localhost:3001/autocomplete?input=${query}`
+            `http://localhost:3001/destinations?input=${query}`
           );
           const data = await res.json();
           dispatch({ type: "autocomplete/loaded", payload: data.predictions });
@@ -84,9 +84,7 @@ function DestinationProvider({ children }) {
 
   async function getDestination(id) {
     try {
-      const res = await fetch(
-        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&key=${API_KEY}`
-      );
+      const res = await fetch(`http://localhost:3001/destination?id=${id}`);
       const data = await res.json();
       dispatch({ type: "destination/loaded", payload: data.result });
     } catch {
@@ -100,9 +98,7 @@ function DestinationProvider({ children }) {
   async function getLocation(id) {
     dispatch({ type: "loading" });
     try {
-      const res = await fetch(
-        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&fields=geometry&key=${API_KEY}`
-      );
+      const res = await fetch(`http://localhost:3001/location?id=${id}`);
       const data = await res.json();
       dispatch({
         type: "location/loaded",

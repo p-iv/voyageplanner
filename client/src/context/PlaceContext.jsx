@@ -61,7 +61,7 @@ function PlaceProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat}%2C${location.lng}&radius=10000&type=tourist_attraction&key=${API_KEY}`
+            `http://localhost:3001/places?lat=${location.lat}&lng=${location.lng}`
           );
           const data = await res.json();
           dispatch({ type: "places/loaded", payload: data.results });
@@ -80,16 +80,14 @@ function PlaceProvider({ children }) {
 
   async function getPlace(id) {
     try {
-      const res = await fetch(
-        `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&key=${API_KEY}`
-      );
+      const res = await fetch(`http://localhost:3001/place?id=${id}`);
       const data = await res.json();
       dispatch({ type: "place/loaded", payload: data.result });
     } catch {
       dispatch({ type: "rejected", payload: "Something went wrong" });
     }
   }
-  console.log(currentPlace);
+
   return (
     <PlaceContext.Provider value={{ getLocation, places, getPlace, isLoading }}>
       {children}
