@@ -6,7 +6,7 @@ import { useDestination } from "../context/DestinationContext";
 import AttractionList from "./AttractionList";
 
 function AttractionsList() {
-  const { getLocation, places } = usePlace();
+  const { getLocation } = usePlace();
   const { mapLocation } = useDestination();
 
   useEffect(

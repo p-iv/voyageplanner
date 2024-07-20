@@ -1,0 +1,10 @@
+.destinationCarousel {
+  display: flex;
+  width: 40rem;
+  margin-top: 2rem;
+}
+.attractionCarousel {
+  display: flex;
+  width: 40rem;
+  margin-top: 1rem;
+}

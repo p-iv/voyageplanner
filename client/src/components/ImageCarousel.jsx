@@ -1,17 +1,16 @@
 import { Carousel } from "antd";
 import Image from "./UI/Image";
-import styles from "./DestinationImageCarousel.module.css";
+import styles from "./ImageCarousel.module.css";
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
-function DestinationImageCarousel({ photos }) {
-  if (photos === undefined) return;
+function ImageCarousel({ photos, carouselType, type, alt_text }) {
   return (
-    <Carousel className={styles.carousel} arrows infinite={true}>
-      {photos.map((photo) => (
+    <Carousel className={`${styles[carouselType]}`} arrows infinite={true}>
+      {photos?.map((photo) => (
         <Image
           source={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photo.photo_reference}&key=${API_KEY}`}
-          type="destinationImage"
-          alt_text="city image"
+          type={type}
+          alt_text={alt_text}
           key={photo.photo_reference}
         />
       ))}
@@ -19,4 +18,4 @@ function DestinationImageCarousel({ photos }) {
   );
 }
 
-export default DestinationImageCarousel;
+export default ImageCarousel;

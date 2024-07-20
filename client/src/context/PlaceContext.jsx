@@ -1,7 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
-
 const PlaceContext = createContext();
 
 const initialState = {
@@ -91,7 +89,9 @@ function PlaceProvider({ children }) {
   }
 
   return (
-    <PlaceContext.Provider value={{ getLocation, places, getPlace, isLoading }}>
+    <PlaceContext.Provider
+      value={{ getLocation, places, getPlace, isLoading, currentPlace }}
+    >
       {children}
     </PlaceContext.Provider>
   );
