@@ -8,6 +8,7 @@ function Schedule() {
 
   return (
     <div className={styles.schedule}>
+      <h1>3 Step: Plan Your Schedule </h1>
       <Space direction="vertical" size={12}>
         <RangePicker
           className={styles.datePicker}
