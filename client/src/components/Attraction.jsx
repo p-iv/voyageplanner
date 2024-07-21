@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import styles from "./Attraction.module.css";
 import { usePlace } from "../context/PlaceContext";
+import { useTrip } from "../context/NewTripContext";
+
+import styles from "./Attraction.module.css";
 import Spinner from "./UI/Spinner";
 import ImageCarousel from "./ImageCarousel";
 import StarRating from "./UI/StarRating";
@@ -15,6 +17,7 @@ function Attraction() {
   const [activeReviews, setActiveReviews] = useState(false);
 
   const { getPlace, currentPlace, isLoading } = usePlace();
+  const { dispatch, attractions } = useTrip();
   const {
     photos,
     formatted_address,
@@ -31,6 +34,13 @@ function Attraction() {
     [attractionId]
   );
 
+  function handleAddAttraction() {
+    if (currentPlace)
+      dispatch({
+        type: "set/attractions",
+        payload: [...attractions, currentPlace],
+      });
+  }
   return (
     <>
       {isLoading ? (
@@ -92,9 +102,17 @@ function Attraction() {
               </ul>
             </>
           )}
-          <Link to="/app/schedule">
-            <Button type="primary">Add Attraction</Button>
-          </Link>
+          <Button type="primary" onClick={handleAddAttraction}>
+            Add Attraction
+          </Button>
+          {attractions.length != 0 && (
+            <div className={styles.confirmAttraction}>
+              <p>You Added {attractions.length} Attractions</p>
+              <Link to="/app/schedule">
+                <Button type="default">Next Step</Button>
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </>

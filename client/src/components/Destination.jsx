@@ -7,11 +7,13 @@ import { useDestination } from "../context/DestinationContext";
 import ImageCarousel from "./ImageCarousel";
 import { Button } from "antd";
 import Spinner from "./UI/Spinner";
+import { useTrip } from "../context/NewTripContext";
 
 function Destination() {
   const { destinationId } = useParams();
   const { getDestination, currentDestination, isLoading, getLocation } =
     useDestination();
+  const { dispatch, destination } = useTrip();
   const photos = currentDestination.photos;
 
   useEffect(
@@ -22,6 +24,13 @@ function Destination() {
     [destinationId]
   );
 
+  function handleSubmitDestination() {
+    if (currentDestination)
+      dispatch({
+        type: "set/destination",
+        payload: currentDestination.formatted_address,
+      });
+  }
   return (
     <>
       {isLoading ? (
@@ -38,7 +47,9 @@ function Destination() {
           <div className={styles.confirm}>
             <p>Your destination: {currentDestination.formatted_address}</p>
             <Link to="/app/attractions">
-              <Button type="primary">Next Step</Button>
+              <Button type="primary" onClick={handleSubmitDestination}>
+                Next Step
+              </Button>
             </Link>
           </div>
         </div>
