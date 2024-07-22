@@ -5,7 +5,7 @@ import styles from "./Destination.module.css";
 import { useDestination } from "../context/DestinationContext";
 
 import ImageCarousel from "./ImageCarousel";
-import { Button } from "antd";
+import Button from "./UI/Button";
 import Spinner from "./UI/Spinner";
 import { useTrip } from "../context/NewTripContext";
 

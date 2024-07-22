@@ -1,7 +1,7 @@
 import styles from "./AttractionItem.module.css";
 import Image from "../components/UI/Image";
 import { Link } from "react-router-dom";
-import { Button } from "antd";
+import Button from "./UI/Button";
 import StarRating from "./UI/StarRating";
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";

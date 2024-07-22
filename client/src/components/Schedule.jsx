@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styles from "./Schedule.module.css";
-import { Button, DatePicker, Space } from "antd";
+import { DatePicker, Space } from "antd";
+import Button from "./UI/Button";
 const { RangePicker } = DatePicker;
 
 function Schedule() {
-  const [date, setDate] = useState(new Date());
-
+  const [date, setDate] = useState("");
+  console.log(date);
   return (
     <div className={styles.schedule}>
       <h1>3 Step: Plan Your Schedule </h1>
@@ -22,7 +23,7 @@ function Schedule() {
           }}
         />
       </Space>
-      <Button type="primary">Choose Date</Button>
+      <Button type="primary">Confirm Date</Button>
     </div>
   );
 }

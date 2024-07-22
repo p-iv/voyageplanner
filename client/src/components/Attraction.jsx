@@ -10,7 +10,7 @@ import ImageCarousel from "./ImageCarousel";
 import StarRating from "./UI/StarRating";
 import { AimOutlined, GlobalOutlined } from "@ant-design/icons";
 import Review from "./Review";
-import { Button } from "antd";
+import Button from "./UI/Button";
 
 function Attraction() {
   const { attractionId } = useParams();
@@ -26,7 +26,11 @@ function Attraction() {
     reviews,
     website,
     current_opening_hours,
+    place_id,
   } = currentPlace;
+  const existingId = attractions.find(
+    (attraction) => attraction.place_id === place_id
+  );
   useEffect(
     function () {
       getPlace(attractionId);
@@ -35,11 +39,12 @@ function Attraction() {
   );
 
   function handleAddAttraction() {
-    if (currentPlace)
+    if (!existingId) {
       dispatch({
         type: "set/attractions",
         payload: [...attractions, currentPlace],
       });
+    }
   }
   return (
     <>
@@ -102,17 +107,27 @@ function Attraction() {
               </ul>
             </>
           )}
-          <Button type="primary" onClick={handleAddAttraction}>
-            Add Attraction
-          </Button>
-          {attractions.length != 0 && (
-            <div className={styles.confirmAttraction}>
-              <p>You Added {attractions.length} Attractions</p>
-              <Link to="/app/schedule">
-                <Button type="default">Next Step</Button>
-              </Link>
-            </div>
+          {!existingId ? (
+            <Button type="primary" onClick={handleAddAttraction}>
+              Add Attraction
+            </Button>
+          ) : (
+            <p className={styles.message}>You Already Added This Attraction</p>
           )}
+
+          <div className={styles.confirmAttraction}>
+            <Link to="/app/attractions">
+              <Button type="back">Back</Button>
+            </Link>
+            {attractions.length != 0 && (
+              <>
+                <p>You Added {attractions.length} Attractions</p>
+                <Link to="/app/schedule">
+                  <Button type="primary">Next Step</Button>
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       )}
     </>

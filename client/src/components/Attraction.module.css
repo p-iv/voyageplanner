@@ -77,3 +77,19 @@
   border: 0;
   cursor: pointer;
 }
+
+.confirmAttraction {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.confirmAttraction p {
+  font-size: 1.2rem;
+}
+.message {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
