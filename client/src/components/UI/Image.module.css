@@ -2,13 +2,13 @@
   margin: 0;
   height: 27rem;
   background: #364d79;
-  width: 100%;
+  max-width: 100%;
 }
 .attractionImage {
   margin: 0;
   height: 25rem;
   background: #364d79;
-  width: 100%;
+  max-width: 100%;
 }
 .imageContainer {
   display: flex;
