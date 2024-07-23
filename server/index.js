@@ -1,12 +1,16 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const fs = require("fs");
 
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+
+const trips = fs.readFileSync(`${__dirname}/data/tripData.json`);
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
@@ -77,6 +81,24 @@ app.get("/place", async (req, res) => {
     console.log(err);
     res.status(500).json({ error: "failed to fetch place" });
   }
+});
+
+app.post("/trip", async (req, res) => {
+  const tripData = req.body;
+
+  trips.push(tripData);
+  fs.writeFile(
+    `${__dirname}/data/tripData.json`,
+    JSON.stringify(tripData),
+    (err) => {
+      res.status(201).json({
+        status: "success",
+        data: {
+          tripData,
+        },
+      });
+    }
+  );
 });
 
 const port = 3001;
