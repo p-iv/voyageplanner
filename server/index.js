@@ -10,8 +10,6 @@ app.use(express.json());
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 
-const trips = fs.readFileSync(`${__dirname}/data/tripData.json`);
-
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.get("/destinations", async (req, res) => {
@@ -83,22 +81,45 @@ app.get("/place", async (req, res) => {
   }
 });
 
-app.post("/trip", async (req, res) => {
-  const tripData = req.body;
+app.post("/trip", (req, res) => {
+  const newTrip = req.body;
 
-  trips.push(tripData);
-  fs.writeFile(
-    `${__dirname}/data/tripData.json`,
-    JSON.stringify(tripData),
-    (err) => {
-      res.status(201).json({
-        status: "success",
-        data: {
-          tripData,
-        },
-      });
+  fs.readFile(`${__dirname}/data/tripData.json`, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Failed to read data" });
     }
-  );
+
+    let existingTrips = [];
+
+    try {
+      existingTrips = JSON.parse(data);
+      if (!Array.isArray(existingTrips)) existingTrips = [];
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Failed to parse data" });
+    }
+
+    existingTrips.push(newTrip);
+
+    fs.writeFile(
+      `${__dirname}/data/tripData.json`,
+      JSON.stringify(existingTrips, null, 2),
+      (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: "Failed to write data" });
+        }
+
+        res.status(201).json({
+          status: "success",
+          data: {
+            tripData: existingTrips,
+          },
+        });
+      }
+    );
+  });
 });
 
 const port = 3001;

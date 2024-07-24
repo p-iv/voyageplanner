@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const NewTripContext = createContext();
 
@@ -45,12 +46,13 @@ function NewTripProvider({ children }) {
   );
   const handleSubmitTrip = async () => {
     const tripData = {
+      id: uuidv4(),
       destination,
       attractions,
     };
 
     try {
-      const res = await fetch("http://localhost:3001/trip", {
+      const res = await fetch("https://voyageplanner-server.vercel.app/trip", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,6 +68,8 @@ function NewTripProvider({ children }) {
         payload: "There was an error of posting data",
       });
     }
+    dispatch({ type: "set/destination", payload: "" });
+    dispatch({ type: "set/attractions", payload: [] });
   };
 
   return (
