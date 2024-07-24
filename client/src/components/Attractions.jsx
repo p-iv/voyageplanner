@@ -7,13 +7,13 @@ import AttractionList from "./AttractionList";
 
 function AttractionsList() {
   const { getLocation } = usePlace();
-  const { mapLocation } = useDestination();
+  const { lat, lng } = useDestination();
 
   useEffect(
     function () {
-      if (Object.keys(mapLocation)) getLocation(mapLocation);
+      getLocation({ lat: lat, lng: lng });
     },
-    [mapLocation]
+    [lat, lng]
   );
 
   return (

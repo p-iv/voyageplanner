@@ -14,18 +14,17 @@ import { useParams } from "react-router-dom";
 function MapComponent() {
   const [mapPosition, setMapPosition] = useState({});
   const { attractionId } = useParams();
-  const { mapLocation } = useDestination();
+  const { lat, lng } = useDestination();
   const { places } = usePlace();
 
   useEffect(
     function () {
-      if (Object.keys(mapLocation))
-        setMapPosition({
-          lat: +mapLocation.lat,
-          lng: +mapLocation.lng,
-        });
+      setMapPosition({
+        lat: lat,
+        lng: lng,
+      });
     },
-    [mapLocation]
+    [lat, lng]
   );
 
   return (

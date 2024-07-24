@@ -29,7 +29,7 @@ function reducer(state, action) {
         currentPlace: action.payload,
         isLoading: false,
       };
-    case "place/selected":
+
     case "location/got":
       return {
         ...state,

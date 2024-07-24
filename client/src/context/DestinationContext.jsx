@@ -8,7 +8,8 @@ const initialState = {
   isLoading: false,
   error: "",
   currentDestination: {},
-  mapLocation: {},
+  lat: 52.2296756,
+  lng: 21.0122287,
 };
 
 function reducer(state, action) {
@@ -46,17 +47,23 @@ function reducer(state, action) {
         currentDestination: action.payload,
       };
 
-    case "location/loaded":
+    case "lat/loaded":
       return {
         ...state,
-        mapLocation: action.payload,
+        lat: action.payload,
+      };
+
+    case "lng/loaded":
+      return {
+        ...state,
+        lng: action.payload,
       };
   }
 }
 
 function DestinationProvider({ children }) {
   const [
-    { autocomplete, isLoading, query, currentDestination, mapLocation },
+    { autocomplete, isLoading, query, currentDestination, lat, lng },
     dispatch,
   ] = useReducer(reducer, initialState);
 
@@ -105,8 +112,12 @@ function DestinationProvider({ children }) {
       );
       const data = await res.json();
       dispatch({
-        type: "location/loaded",
-        payload: data.result.geometry.location,
+        type: "lat/loaded",
+        payload: data.result.geometry.location.lat,
+      });
+      dispatch({
+        type: "lng/loaded",
+        payload: data.result.geometry.location.lng,
       });
     } catch {
       dispatch({
@@ -125,7 +136,9 @@ function DestinationProvider({ children }) {
         getDestination,
         currentDestination,
         getLocation,
-        mapLocation,
+
+        lat,
+        lng,
       }}
     >
       {children}
