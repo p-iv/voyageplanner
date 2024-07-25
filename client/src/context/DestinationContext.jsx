@@ -73,7 +73,7 @@ function DestinationProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `https://voyageplanner-server.vercel.app/destinations?input=${query}`
+            `https://voyageplanner-server.vercel.app/api/googleMapsApi/destinations?input=${query}`
           );
           const data = await res.json();
           dispatch({ type: "autocomplete/loaded", payload: data.predictions });
@@ -92,7 +92,7 @@ function DestinationProvider({ children }) {
   async function getDestination(id) {
     try {
       const res = await fetch(
-        `https://voyageplanner-server.vercel.app/destination?id=${id}`
+        `https://voyageplanner-server.vercel.app/api/googleMapsApi/destination?id=${id}`
       );
       const data = await res.json();
       dispatch({ type: "destination/loaded", payload: data.result });
@@ -108,7 +108,7 @@ function DestinationProvider({ children }) {
     dispatch({ type: "loading" });
     try {
       const res = await fetch(
-        `https://voyageplanner-server.vercel.app/location?id=${id}`
+        `https://voyageplanner-server.vercel.app/api/googleMapsApi/location?id=${id}`
       );
       const data = await res.json();
       dispatch({

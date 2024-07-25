@@ -52,13 +52,16 @@ function NewTripProvider({ children }) {
     };
 
     try {
-      const res = await fetch("https://voyageplanner-server.vercel.app/trips", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(tripData),
-      });
+      const res = await fetch(
+        "https://voyageplanner-server.vercel.app/api/trips",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(tripData),
+        }
+      );
       const data = await res.json();
       console.log(data);
     } catch (err) {
