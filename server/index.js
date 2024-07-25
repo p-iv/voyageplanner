@@ -10,9 +10,7 @@ app.use(express.json());
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
-
-app.get("/destinations", async (req, res) => {
+const getAllDestinations = async (req, res) => {
   const input = req.query.input;
 
   try {
@@ -24,9 +22,9 @@ app.get("/destinations", async (req, res) => {
     console.log(err);
     res.status(500).json({ error: "failed to fetch destinations" });
   }
-});
+};
 
-app.get("/destination", async (req, res) => {
+const getDestination = async (req, res) => {
   const id = req.query.id;
   try {
     response = await axios.get(
@@ -37,9 +35,9 @@ app.get("/destination", async (req, res) => {
     console.log(err);
     res.status(500).json({ error: "failed to fetch destination" });
   }
-});
+};
 
-app.get("/location", async (req, res) => {
+const getLocation = async (req, res) => {
   const id = req.query.id;
   try {
     const response = await axios.get(
@@ -50,9 +48,9 @@ app.get("/location", async (req, res) => {
     console.log(err);
     res.status(500).json({ error: "failed to fetch location" });
   }
-});
+};
 
-app.get("/places", async (req, res) => {
+const getPlaces = async (req, res) => {
   const location = {
     lat: req.query.lat,
     lng: req.query.lng,
@@ -66,9 +64,9 @@ app.get("/places", async (req, res) => {
     console.log(err);
     res.status(500).json({ error: "failed to fetch places" });
   }
-});
+};
 
-app.get("/place", async (req, res) => {
+const getPlace = async (req, res) => {
   const id = req.query.id;
   try {
     const response = await axios.get(
@@ -79,9 +77,9 @@ app.get("/place", async (req, res) => {
     console.log(err);
     res.status(500).json({ error: "failed to fetch place" });
   }
-});
+};
 
-app.post("/trip", (req, res) => {
+const createTrip = (req, res) => {
   const newTrip = req.body;
 
   fs.readFile(`${__dirname}/data/tripData.json`, "utf8", (err, data) => {
@@ -120,7 +118,16 @@ app.post("/trip", (req, res) => {
       }
     );
   });
-});
+};
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
+app.route("/destinations").get(getAllDestinations);
+app.route("/destination").get(getDestination);
+app.route("/location").get(getLocation);
+app.route("/places").get(getPlaces);
+app.route("/place").get(getPlace);
+app.route("/trips").post(createTrip);
 
 const port = 3001;
 app.listen(port, () => {
