@@ -1,13 +1,7 @@
 .nav {
   margin-top: 1.5rem;
+  width: 100%;
 }
-.nav ul {
-  list-style: none;
-  display: flex;
-  background-color: var(--color-dark-2);
-  border-radius: 5px;
-}
-
 .nav a:link,
 .nav a:visited {
   display: block;

@@ -1,0 +1,20 @@
+.addTrip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.addTripButton {
+  width: 80%;
+  height: 10rem;
+  border-radius: 2rem;
+  border: 0;
+  font-size: 2rem;
+  background-color: var(--color-dark-2);
+  color: var(--color-light-2);
+}
+.addTripButton:hover {
+  background-color: var(--color-dark-1);
+  color: var(--color-light-1);
+  cursor: pointer;
+}
