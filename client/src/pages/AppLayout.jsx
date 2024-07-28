@@ -1,14 +1,14 @@
 import styles from "./AppLayout.module.css";
-import AppNav from "../components/AppNav";
-import MainComponent from "../components/MainComponent";
-import MapComponent from "../components/MapComponent";
+import PageNav from "../components/PageNav";
+import RightBar from "../components/RightBar";
+import LeftBar from "../components/LeftBar";
 
 function AppLayout() {
   return (
     <main className={styles.app}>
-      <AppNav />
-      <MainComponent />
-      <MapComponent />
+      <PageNav />
+      <LeftBar />
+      <RightBar />
     </main>
   );
 }

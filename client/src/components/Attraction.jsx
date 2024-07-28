@@ -85,47 +85,36 @@ function Attraction() {
                 ))}
             </div>
           </div>
-          {!activeReviews ? (
-            <button
-              className={styles.show}
-              onClick={() => setActiveReviews(!activeReviews)}
-            >
-              Show Reviews
-            </button>
-          ) : (
-            <>
-              <button
-                className={styles.hide}
-                onClick={() => setActiveReviews(!activeReviews)}
-              >
-                Hide Reviews
-              </button>
-              <ul className={styles.reviews}>
-                {reviews?.map((review, index) => (
-                  <Review key={index} review={review} />
-                ))}
-              </ul>
-            </>
+
+          <button
+            className={styles.reviewButton}
+            onClick={() => setActiveReviews(!activeReviews)}
+          >
+            {activeReviews ? "Hide Reviews" : "Show Reviews"}
+          </button>
+
+          {activeReviews && (
+            <ul className={styles.reviews}>
+              {reviews?.map((review, index) => (
+                <Review key={index} review={review} />
+              ))}
+            </ul>
           )}
-          {!existingId ? (
-            <Button type="primary" onClick={handleAddAttraction}>
-              Add Attraction
-            </Button>
-          ) : (
-            <p className={styles.message}>You Already Added This Attraction</p>
-          )}
+
+          <p className={styles.message}>
+            {attractions.length}{" "}
+            {attractions.length === 1 ? "Attraction" : "Attractions"} in Your
+            List
+          </p>
 
           <div className={styles.confirmAttraction}>
             <Link to="/app/attractions">
               <Button type="back">Back</Button>
             </Link>
-            {attractions.length != 0 && (
-              <>
-                <p>You Added {attractions.length} Attractions</p>
-                <Link to="/app/schedule">
-                  <Button type="primary">Next Step</Button>
-                </Link>
-              </>
+            {!existingId && (
+              <Button type="primary" onClick={handleAddAttraction}>
+                Add Attraction
+              </Button>
             )}
           </div>
         </div>

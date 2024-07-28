@@ -5,7 +5,7 @@ import styles from "./Destination.module.css";
 import { useDestination } from "../context/DestinationContext";
 
 import ImageCarousel from "./ImageCarousel";
-import Button from "./UI/Button";
+
 import Spinner from "./UI/Spinner";
 import { useTrip } from "../context/NewTripContext";
 
@@ -44,14 +44,6 @@ function Destination() {
             alt_text="city image"
           />
           <h2>{currentDestination.formatted_address}</h2>
-          <div className={styles.confirm}>
-            <p>Your destination: {currentDestination.formatted_address}</p>
-            <Link to="/app/attractions">
-              <Button type="primary" onClick={handleSubmitDestination}>
-                Next Step
-              </Button>
-            </Link>
-          </div>
         </div>
       )}
     </>

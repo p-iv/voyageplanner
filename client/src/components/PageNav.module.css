@@ -1,34 +1,19 @@
-.nav {
+.logo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 1.3rem;
 }
 
-.nav ul {
-  list-style: none;
+.logo_icon img {
+  width: 3.7rem;
+}
+.menu {
+  height: 80vh;
+  margin-top: 2rem;
   display: flex;
-  align-items: center;
-  gap: 4rem;
-}
-
-.nav a:link,
-.nav a:visited {
-  text-decoration: none;
-  color: var(--color-light-1);
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-/* CSS Modules feature */
-.nav a:global(.active) {
-  color: var(--brand-color);
-}
-
-a.ctaLink:link,
-a.ctaLink:visited {
-  background-color: var(--brand-color);
-  color: var(--color-dark-0);
-  padding: 0.8rem 2rem;
-  border-radius: 7px;
+  flex-direction: column;
+  gap: 1.3rem;
+  font-size: 1.2rem;
+  position: relative;
 }

@@ -3,7 +3,7 @@ const fs = require("fs");
 exports.createTrip = (req, res) => {
   const newTrip = req.body;
 
-  fs.readFile(`${__dirname}/data/tripData.json`, "utf8", (err, data) => {
+  fs.readFile(`${__dirname}/../data/tripData.json`, "utf8", (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: "Failed to read data" });

@@ -1,0 +1,3 @@
+.rightBar {
+  width: clamp(70%, 60%, 50%);
+}

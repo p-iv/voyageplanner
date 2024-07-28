@@ -1,9 +1,15 @@
+import { memo } from "react";
 import { Carousel } from "antd";
 import Image from "./UI/Image";
 import styles from "./ImageCarousel.module.css";
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
-function ImageCarousel({ photos, carouselType, type, alt_text }) {
+const ImageCarousel = memo(function ImageCarousel({
+  photos,
+  carouselType,
+  type,
+  alt_text,
+}) {
   return (
     <Carousel className={`${styles[carouselType]}`} arrows infinite={true}>
       {photos?.map((photo) => (
@@ -16,6 +22,6 @@ function ImageCarousel({ photos, carouselType, type, alt_text }) {
       ))}
     </Carousel>
   );
-}
+});
 
 export default ImageCarousel;

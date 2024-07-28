@@ -6,15 +6,20 @@ function AttractionList() {
   const { places, isLoading } = usePlace();
   return (
     <>
-      //TODO: add filters
       {isLoading ? (
         <Spinner />
       ) : (
-        <ul className={styles.attractionList}>
-          {places?.map((place) => (
-            <AttractionItem place={place} key={place.place_id} />
-          ))}
-        </ul>
+        <>
+          {places.length === 0 ? (
+            <h3>First Choose a destination</h3>
+          ) : (
+            <ul className={styles.attractionList}>
+              {places?.map((place) => (
+                <AttractionItem place={place} key={place.place_id} />
+              ))}
+            </ul>
+          )}
+        </>
       )}
     </>
   );

@@ -1,0 +1,5 @@
+.appContent {
+  background-color: var(--color-dark-1);
+  height: 60%;
+  padding: 2rem;
+}

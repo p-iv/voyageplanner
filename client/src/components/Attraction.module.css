@@ -4,7 +4,7 @@
   width: 90%;
   align-items: center;
   background-color: var(--color-dark-2);
-  margin-top: 2rem;
+
   border-radius: 2rem;
   gap: 2rem;
   padding: 2rem;
@@ -70,8 +70,7 @@
   background: var(--color-light-2);
 }
 
-.show,
-.hide {
+.reviewButton {
   background-color: var(--color-dark-2);
   color: var(--color-light-1);
   border: 0;
