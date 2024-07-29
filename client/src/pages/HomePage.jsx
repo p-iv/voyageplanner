@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import PageNav from "../components/PageNav";
+import AppNav from "../components/AppNav";
 import styles from "./HomePage.module.css";
 
 function HomePage() {
   return (
     <main className={styles.homepage}>
-      <PageNav />
+      <AppNav />
       <section>
         <h1> VoyagePlanner Will Plan Your Next Adventure</h1>
 

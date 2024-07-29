@@ -1,10 +1,10 @@
 import styles from "./PlannerNav.module.css";
-import AddTripForm from "./AddTripForm";
+import AddTrip from "./features/addTrip/AddTrip";
 
 function PlannerNav() {
   return (
     <div className={styles.nav}>
-      <AddTripForm />
+      <AddTrip />
     </div>
   );
 }

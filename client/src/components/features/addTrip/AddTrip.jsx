@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styles from "./AddTripForm.module.css";
+import styles from "./AddTrip.module.css";
+import AddTripForm from "./AddTripForm";
 
-function AddTripForm() {
+function AddTrip() {
   const [activeForm, setActiveForm] = useState(false);
   return (
     <div className={styles.addTrip}>
@@ -13,10 +14,10 @@ function AddTripForm() {
           Add Trip
         </button>
       ) : (
-        <h1>Form</h1>
+        <AddTripForm setActiveForm={setActiveForm} activeForm={activeForm} />
       )}
     </div>
   );
 }
 
-export default AddTripForm;
+export default AddTrip;
