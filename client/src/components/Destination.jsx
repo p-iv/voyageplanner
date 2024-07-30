@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import styles from "./Destination.module.css";
 import { useDestination } from "../context/DestinationContext";
@@ -8,6 +8,7 @@ import ImageCarousel from "./ImageCarousel";
 
 import Spinner from "./UI/Spinner";
 import { useTrip } from "../context/NewTripContext";
+import DestinationNav from "./DestinationNav";
 
 function Destination() {
   const { destinationId } = useParams();
@@ -24,15 +25,18 @@ function Destination() {
     [destinationId]
   );
 
-  function handleSubmitDestination() {
-    if (currentDestination)
+  useEffect(
+    function () {
       dispatch({
         type: "set/destination",
         payload: currentDestination.formatted_address,
       });
-  }
+    },
+    [currentDestination]
+  );
   return (
     <>
+      <DestinationNav />
       {isLoading ? (
         <Spinner />
       ) : (

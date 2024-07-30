@@ -1,11 +1,8 @@
 .addTrip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
 }
 .addTripButton {
-  width: 80%;
+  width: 100%;
   height: 10rem;
   border-radius: 2rem;
   border: 0;

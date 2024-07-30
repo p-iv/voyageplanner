@@ -1,7 +1,7 @@
 .attraction {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 60%;
   align-items: center;
   background-color: var(--color-dark-2);
 

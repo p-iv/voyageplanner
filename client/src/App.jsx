@@ -31,10 +31,6 @@ function App() {
                 <Route path="/product" element={<Product />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/app" element={<AppLayout />}>
-                  <Route
-                    index
-                    element={<Navigate replace to="destination" />}
-                  />
                   <Route path="destination" element={<DestinationList />} />
                   <Route
                     path="destination/:destinationId"

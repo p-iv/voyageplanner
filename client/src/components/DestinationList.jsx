@@ -15,7 +15,6 @@ function DestinationList() {
 
   return (
     <div className={styles.destinationlist}>
-      <h1>1 Step: Choose your destination </h1>
       <input
         value={query}
         type="text"

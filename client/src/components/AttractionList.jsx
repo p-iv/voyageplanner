@@ -2,16 +2,18 @@ import styles from "./AttractionList.module.css";
 import AttractionItem from "./AttractionItem";
 import { usePlace } from "../context/PlaceContext";
 import Spinner from "../components/UI/Spinner";
+import DestinationNav from "./DestinationNav";
 function AttractionList() {
   const { places, isLoading } = usePlace();
   return (
     <>
+      <DestinationNav />
       {isLoading ? (
         <Spinner />
       ) : (
         <>
           {places.length === 0 ? (
-            <h3>First Choose a destination</h3>
+            <h3 className={styles.message}>First Choose a destination</h3>
           ) : (
             <ul className={styles.attractionList}>
               {places?.map((place) => (

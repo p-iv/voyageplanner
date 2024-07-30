@@ -18,7 +18,6 @@ function AttractionsList() {
 
   return (
     <div className={styles.attractions}>
-      <h1>2 Step: Add Attractions </h1>
       <AttractionList />
     </div>
   );
