@@ -1,6 +1,6 @@
 .attractionList {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10%;
   overflow: auto;
   height: 100%;

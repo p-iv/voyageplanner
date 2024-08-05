@@ -1,5 +1,6 @@
 .destinationCarousel {
   display: flex;
+  height: 100%;
   width: 40rem;
   margin-top: 2rem;
 }

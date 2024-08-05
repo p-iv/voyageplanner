@@ -11,20 +11,40 @@ const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 function AddDestination() {
   const [activeAddDestination, setActiveDestination] = useState(false);
   const { destination, attractions, destinations, dispatch } = useTrip();
+
   const tripDestination = {
     id: uuidv4(),
     name: destination,
     attractions: attractions,
   };
+
   function handleConfirmDestination() {
     setActiveDestination(!activeAddDestination);
+
     dispatch({
       type: "add/Destinations",
       payload: [...destinations, tripDestination],
     });
+
     dispatch({ type: "set/destination", payload: "" });
+
     dispatch({ type: "set/attractions", payload: [] });
+
+    dispatch({
+      type: "set/activeDestinationForm",
+      payload: false,
+    });
   }
+
+  function handleActiveDestination() {
+    setActiveDestination(!activeAddDestination);
+
+    dispatch({
+      type: "set/activeDestinationForm",
+      payload: true,
+    });
+  }
+
   return (
     <>
       {destinations.length > 0 && (
@@ -52,7 +72,7 @@ function AddDestination() {
       {!activeAddDestination ? (
         <Link to="destination">
           <button
-            onClick={() => setActiveDestination(!activeAddDestination)}
+            onClick={handleActiveDestination}
             className={styles.addDestinationButton}
           >
             Add Destination

@@ -1,10 +1,10 @@
 import styles from "./Pricing.module.css";
 
-import PageNav from "../components/PageNav";
+import AppNav from "../components/AppNav";
 function Product() {
   return (
     <main className={styles.pricing}>
-      <PageNav />
+      <AppNav />
       <section>
         <img src="img-2.jpg" alt="city view" />
         <div>

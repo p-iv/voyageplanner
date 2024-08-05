@@ -3,34 +3,40 @@ import Image from "../components/UI/Image";
 import { Link } from "react-router-dom";
 import Button from "./UI/Button";
 import StarRating from "./UI/StarRating";
+import { usePlace } from "../context/PlaceContext";
+import Spinner from "./UI/Spinner";
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 
 function AttractionItem({ place }) {
-  const { photos, name, place_id, icon, rating } = place;
-  return (
-    <li className={styles.attraction}>
-      {photos?.map((photo) => (
-        <Image
-          source={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=${photo.photo_reference}&key=${API_KEY}`}
-          alt_text="place image"
-          type="attractionImage"
-          key={photo.photo_reference}
-        />
-      ))}
-      <div className={styles.name}>
-        <img src={icon} />
-        <h2>{name}</h2>
-      </div>
-      <div className={styles.rating}>
-        <StarRating defaultRating={rating} size={24} />
-        <p>{rating}</p>
-      </div>
+  const { isLoading } = usePlace();
+  const { photos, name, place_id, rating } = place;
 
-      <Link to={`${place_id}`}>
-        <Button type="primary">More Info</Button>
-      </Link>
-    </li>
+  return (
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Link to={`${place_id}`}>
+          <li className={styles.attraction}>
+            {photos?.map((photo) => (
+              <Image
+                source={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=${photo.photo_reference}&key=${API_KEY}`}
+                alt_text="place image"
+                type="attractionItemImage"
+                key={photo.photo_reference}
+              />
+            ))}
+
+            <h2>{name}</h2>
+            <div className={styles.rating}>
+              <StarRating defaultRating={rating} size={24} />
+              <p>{rating}</p>
+            </div>
+          </li>
+        </Link>
+      )}
+    </>
   );
 }
 

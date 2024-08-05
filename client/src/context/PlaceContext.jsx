@@ -77,6 +77,7 @@ function PlaceProvider({ children }) {
   }
 
   async function getPlace(id) {
+    dispatch({ type: "loading" });
     try {
       const res = await fetch(
         `https://voyageplanner-server.vercel.app/api/googleMapsApi/place?id=${id}`

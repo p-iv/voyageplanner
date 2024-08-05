@@ -10,12 +10,14 @@ import { useEffect, useState } from "react";
 import { useDestination } from "../context/DestinationContext";
 import { usePlace } from "../context/PlaceContext";
 import { useParams } from "react-router-dom";
+import { useTrip } from "../context/NewTripContext";
 
 function MapComponent() {
   const [mapPosition, setMapPosition] = useState({});
   const { attractionId } = useParams();
   const { lat, lng } = useDestination();
   const { places } = usePlace();
+  const { activeDestinationForm } = useTrip();
 
   useEffect(
     function () {
@@ -29,7 +31,13 @@ function MapComponent() {
 
   return (
     <APIProvider apiKey={"AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI"}>
-      <div className={styles.mapContainer}>
+      <div
+        className={
+          activeDestinationForm
+            ? styles.mapContainerActive
+            : styles.mapContainerNotActive
+        }
+      >
         <Map
           defaultZoom={11}
           defaultCenter={{

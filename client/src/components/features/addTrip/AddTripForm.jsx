@@ -9,14 +9,18 @@ function AddTripForm({ setActiveForm, activeForm }) {
 
   function handleChange(e) {
     e.preventDefault();
+
     setTripName(e.target.value);
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     // Add trip logic here
+
     setActiveForm(!activeForm);
-    setTripName(""); // Clear the input field after submission
+    setTripName("");
   }
+
   return (
     <div className={styles.tripForm}>
       <input

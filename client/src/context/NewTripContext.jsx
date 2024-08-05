@@ -3,6 +3,7 @@ import { createContext, useContext, useReducer } from "react";
 const NewTripContext = createContext();
 
 const initialState = {
+  activeDestinationForm: false,
   destination: "",
   destinations: [],
   attractions: [],
@@ -32,7 +33,11 @@ function reducer(state, action) {
         ...state,
         destinations: action.payload,
       };
-
+    case "set/activeDestinationForm":
+      return {
+        ...state,
+        activeDestinationForm: action.payload,
+      };
     case "rejected":
       return {
         ...state,
@@ -45,12 +50,20 @@ function reducer(state, action) {
 }
 
 function NewTripProvider({ children }) {
-  const [{ destination, attractions, date, destinations }, dispatch] =
-    useReducer(reducer, initialState);
-  console.log(destinations);
+  const [
+    { destination, attractions, date, destinations, activeDestinationForm },
+    dispatch,
+  ] = useReducer(reducer, initialState);
+
   return (
     <NewTripContext.Provider
-      value={{ dispatch, destination, attractions, destinations }}
+      value={{
+        dispatch,
+        destinations,
+        attractions,
+        destination,
+        activeDestinationForm,
+      }}
     >
       {children}
     </NewTripContext.Provider>

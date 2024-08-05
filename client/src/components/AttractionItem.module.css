@@ -4,11 +4,11 @@
   justify-content: center;
   align-items: center;
   background-color: var(--color-dark-2);
-
+  padding: 1rem;
   border-radius: 2rem;
   gap: 2rem;
-  padding: 2rem;
-  min-width: 40%;
+
+  width: 90%;
 }
 .name {
   display: flex;
@@ -17,16 +17,19 @@
   gap: 2rem;
 }
 .name img {
-  height: 5rem;
+  max-height: 3rem;
 }
 .name h2 {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
 }
 .rating {
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
   align-items: center;
 }
 .rating p {
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+.attractionItemInfo {
+  padding: 1rem;
 }

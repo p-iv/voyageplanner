@@ -1,6 +1,14 @@
-.mapContainer {
+.mapContainerActive {
   flex: 1;
-  height: 50%;
+  height: 100%;
+  width: 50%;
+  background-color: var(--color-dark-2);
+  position: relative;
+}
+.mapContainerNotActive {
+  flex: 1;
+  height: 100%;
+  width: 100%;
   background-color: var(--color-dark-2);
   position: relative;
 }
