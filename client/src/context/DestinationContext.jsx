@@ -90,6 +90,7 @@ function DestinationProvider({ children }) {
   );
 
   async function getDestination(id) {
+    dispatch({ type: "loading" });
     try {
       const res = await fetch(
         `https://voyageplanner-server.vercel.app/api/googleMapsApi/destination?id=${id}`
