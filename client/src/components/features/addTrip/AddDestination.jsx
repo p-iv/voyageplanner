@@ -52,7 +52,9 @@ function AddDestination() {
           <h2>Added Destinations:</h2>
           {destinations.map((destination) => (
             <div key={destination.id}>
-              <h3>{destination.name}</h3>
+              <h3 className={styles.addedDestinationName}>
+                {destination.name}
+              </h3>
               <ul className={styles.addedDestination}>
                 {destination.attractions.map((attraction) => (
                   <li key={attraction.id}>
