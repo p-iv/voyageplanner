@@ -27,6 +27,6 @@
 .addedAttractionImage {
   margin: 0;
   height: 10rem;
-  width: 15rem;
+  width: 100%;
   background: #364d79;
 }

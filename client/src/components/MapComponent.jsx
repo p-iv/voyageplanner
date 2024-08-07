@@ -17,7 +17,7 @@ function MapComponent() {
   const { attractionId } = useParams();
   const { lat, lng } = useDestination();
   const { places } = usePlace();
-  const { activeDestinationForm } = useTrip();
+  const { activeDestinationForm, destinations } = useTrip();
 
   useEffect(
     function () {
@@ -46,26 +46,37 @@ function MapComponent() {
           }}
           mapId="480b6ae26e4d1ac7"
         >
-          {places.map((place) => (
-            <AdvancedMarker
-              key={place.place_id}
-              position={place.geometry.location}
-            >
-              {attractionId !== place.place_id ? (
-                <Pin
-                  background={"#007bff"}
-                  borderColor={"#eef4f4"}
-                  glyphColor={"#eef4f4"}
-                />
-              ) : (
-                <Pin
-                  background={"#fd7e14"}
-                  borderColor={"#eef4f4"}
-                  glyphColor={"#ffc107"}
-                />
-              )}
-            </AdvancedMarker>
-          ))}
+          {activeDestinationForm &&
+            places.map((place) => (
+              <AdvancedMarker
+                key={place.place_id}
+                position={place.geometry.location}
+              >
+                {attractionId !== place.place_id ? (
+                  <Pin
+                    background={"#007bff"}
+                    borderColor={"#eef4f4"}
+                    glyphColor={"#eef4f4"}
+                  />
+                ) : (
+                  <Pin
+                    background={"#fd7e14"}
+                    borderColor={"#eef4f4"}
+                    glyphColor={"#ffc107"}
+                  />
+                )}
+              </AdvancedMarker>
+            ))}
+          {destinations.map((destination) =>
+            destination.attractions.map((attraction) => (
+              <AdvancedMarker
+                key={attraction.place_id}
+                position={attraction.geometry.location}
+              >
+                <Pin background={"#ff0000"} glyphColor={"#eef4f4"} />
+              </AdvancedMarker>
+            ))
+          )}
 
           <ChangeCenter position={mapPosition} />
         </Map>

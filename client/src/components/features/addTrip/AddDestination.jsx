@@ -49,7 +49,6 @@ function AddDestination() {
     <>
       {destinations.length > 0 && (
         <div className={styles.destinationList}>
-          <h2>Added Destinations:</h2>
           {destinations.map((destination) => (
             <div key={destination.id}>
               <h3 className={styles.addedDestinationName}>
