@@ -1,0 +1,52 @@
+.addedDestination {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--brand-color);
+  border-radius: 1.5rem 1.5rem 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* transform: scale(1.02); */
+}
+
+.addedDestination p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.addedDestination button {
+  background-color: var(--color-light-0);
+  color: var(--color-dark-2);
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--color-dark-2);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.addedDestination button:hover {
+  background-color: var(--color-dark-2);
+  color: var(--color-light-2);
+}
+
+.addedAttractions {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-dark-2);
+  border-radius: 0 0 1.5rem 1.5rem;
+  list-style: none;
+}
+
+.addedAttractions p {
+  font-size: 1.2rem;
+  width: 100%;
+  background-color: var(--color-light-1);
+  color: #000;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0 0 0.5rem 0.5rem;
+}

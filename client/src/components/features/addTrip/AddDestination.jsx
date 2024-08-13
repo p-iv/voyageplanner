@@ -1,12 +1,9 @@
 import { useState } from "react";
 import styles from "./AddDestination.module.css";
 import { Link } from "react-router-dom";
-import Button from "../../UI/Button";
 import { useTrip } from "../../../context/NewTripContext";
 import { v4 as uuidv4 } from "uuid";
-import Image from "../../UI/Image";
-
-const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+import AddedDestination from "./AddedDestination";
 
 function AddDestination() {
   const [activeAddDestination, setActiveDestination] = useState(false);
@@ -23,7 +20,7 @@ function AddDestination() {
 
     dispatch({
       type: "add/Destinations",
-      payload: [...destinations, tripDestination],
+      payload: tripDestination,
     });
 
     dispatch({ type: "set/destination", payload: "" });
@@ -50,23 +47,7 @@ function AddDestination() {
       {destinations.length > 0 && (
         <div className={styles.destinationList}>
           {destinations.map((destination) => (
-            <div key={destination.id}>
-              <h3 className={styles.addedDestinationName}>
-                {destination.name}
-              </h3>
-              <ul className={styles.addedDestination}>
-                {destination.attractions.map((attraction) => (
-                  <li key={attraction.id}>
-                    <Image
-                      alt_text="attraction image"
-                      type="addedAttractionImage"
-                      source={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photos[0].photo_reference}&key=${API_KEY}`}
-                    />
-                    <p>{attraction.name}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <AddedDestination key={destination.id} destination={destination} />
           ))}
         </div>
       )}
@@ -83,9 +64,12 @@ function AddDestination() {
         <>
           {destination != "" && attractions.length != 0 ? (
             <Link to="/app">
-              <Button type="primary" onClick={handleConfirmDestination}>
+              <button
+                onClick={handleConfirmDestination}
+                className={styles.confirmDestinationButton}
+              >
                 Confirm Destination
-              </Button>
+              </button>
             </Link>
           ) : null}
         </>
