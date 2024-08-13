@@ -72,7 +72,7 @@ function NewTripProvider({ children }) {
     { destination, attractions, trips, destinations, activeDestinationForm },
     dispatch,
   ] = useReducer(reducer, initialState);
-  console.log(trips);
+
   return (
     <NewTripContext.Provider
       value={{
@@ -81,6 +81,7 @@ function NewTripProvider({ children }) {
         attractions,
         destination,
         activeDestinationForm,
+        trips,
       }}
     >
       {children}

@@ -13,7 +13,7 @@ function AddTripForm({ setActiveForm, activeForm }) {
 
   const newTrip = {
     id: uuidv4(),
-    name: tripName,
+    name: tripName.toUpperCase(),
     destinations: destinations,
   };
 
