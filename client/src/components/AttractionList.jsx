@@ -9,11 +9,11 @@ function AttractionList() {
   return (
     <>
       <DestinationNav />
+      <Filters />
       {isLoading ? (
         <Spinner />
       ) : (
         <>
-          <Filters />
           {places.length === 0 ? (
             <h3 className={styles.message}>First Choose a destination</h3>
           ) : (
