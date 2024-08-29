@@ -17,7 +17,15 @@ function MapComponent() {
   const { attractionId } = useParams();
   const { lat, lng } = useDestination();
   const { places } = usePlace();
-  const { activeDestinationForm, destinations } = useTrip();
+  const {
+    activeDestinationForm,
+    destinations,
+    selectedTrip,
+    activeTripDestinations,
+    trips,
+  } = useTrip();
+
+  const trip = trips.find((trip) => trip.id === selectedTrip);
 
   useEffect(
     function () {
@@ -77,7 +85,20 @@ function MapComponent() {
               </AdvancedMarker>
             ))
           )}
-
+          {selectedTrip && (
+            <>
+              {trip.destinations?.map((trip) =>
+                trip.attractions.map((attraction) => (
+                  <AdvancedMarker
+                    key={attraction.place_id}
+                    position={attraction.geometry.location}
+                  >
+                    <Pin background={"#ff0000"} glyphColor={"#eef4f4"} />
+                  </AdvancedMarker>
+                ))
+              )}
+            </>
+          )}
           <ChangeCenter position={mapPosition} />
         </Map>
       </div>

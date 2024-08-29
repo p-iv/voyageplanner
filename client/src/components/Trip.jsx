@@ -1,13 +1,24 @@
 import { useState } from "react";
 import styles from "./Trip.module.css";
 import TripDestination from "./TripDestination";
+import { useTrip } from "../context/NewTripContext";
 
 function Trip({ trip }) {
   const [activeViewDestinations, setActiveViewDestinations] = useState(false);
+  const { dispatch, selectedTrip } = useTrip();
 
-  function handleViewDestinations() {
+  const handleViewDestinations = () => {
     setActiveViewDestinations(!activeViewDestinations);
-  }
+    if (selectedTrip === trip.id) {
+      dispatch({ type: "set/selectedTrip", payload: null });
+    } else {
+      dispatch({ type: "set/selectedTrip", payload: trip.id });
+    }
+  };
+
+  const handleDeleteDestination = () => {
+    dispatch({ type: "delete/trip", payload: trip.id });
+  };
   return (
     <li className={styles.tripItem}>
       <div className={styles.trip}>
@@ -17,11 +28,12 @@ function Trip({ trip }) {
             className={styles.viewDestinationsButton}
             onClick={handleViewDestinations}
           >
-            {activeViewDestinations
-              ? "Close Destinations"
-              : "View Destinations"}
+            {activeViewDestinations ? "Hide Destinations" : "Show Destinations"}
           </button>
-          <button className={styles.deleteDestinationButton}>
+          <button
+            className={styles.deleteDestinationButton}
+            onClick={handleDeleteDestination}
+          >
             Delete Trip
           </button>
         </div>

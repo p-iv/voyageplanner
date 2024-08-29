@@ -8,6 +8,7 @@ const initialState = {
   destinations: [],
   attractions: [],
   trips: [],
+  selectedTrip: null,
   date: "",
   error: "",
 };
@@ -44,6 +45,7 @@ function reducer(state, action) {
         ...state,
         activeDestinationForm: action.payload,
       };
+
     case "delete/destination":
       return {
         ...state,
@@ -55,6 +57,16 @@ function reducer(state, action) {
       return {
         ...state,
         trips: [...state.trips, action.payload],
+      };
+    case "delete/trip":
+      return {
+        ...state,
+        trips: state.trips.filter((trip) => trip.id !== action.payload),
+      };
+    case "set/selectedTrip":
+      return {
+        ...state,
+        selectedTrip: action.payload,
       };
     case "rejected":
       return {
@@ -69,7 +81,14 @@ function reducer(state, action) {
 
 function NewTripProvider({ children }) {
   const [
-    { destination, attractions, trips, destinations, activeDestinationForm },
+    {
+      destination,
+      attractions,
+      trips,
+      destinations,
+      activeDestinationForm,
+      selectedTrip,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
 
@@ -82,6 +101,7 @@ function NewTripProvider({ children }) {
         destination,
         activeDestinationForm,
         trips,
+        selectedTrip,
       }}
     >
       {children}

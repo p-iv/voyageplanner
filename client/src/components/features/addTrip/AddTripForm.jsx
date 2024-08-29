@@ -9,7 +9,7 @@ import { usePlace } from "../../../context/PlaceContext";
 function AddTripForm({ setActiveForm, activeForm }) {
   const [tripName, setTripName] = useState("");
 
-  const { dispatch, destinations, attractions } = useTrip();
+  const { dispatch, destinations } = useTrip();
 
   const newTrip = {
     id: uuidv4(),
@@ -28,6 +28,7 @@ function AddTripForm({ setActiveForm, activeForm }) {
 
       dispatch({ type: "add/trip", payload: newTrip });
       dispatch({ type: "set/destinations", payload: [] });
+      dispatch({ type: "set/activeDestinationForm", payload: false });
       setActiveForm(!activeForm);
       setTripName("");
     } else {

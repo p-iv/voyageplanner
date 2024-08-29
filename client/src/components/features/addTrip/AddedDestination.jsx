@@ -12,7 +12,7 @@ function AddedDestination({ destination }) {
   };
 
   return (
-    <div key={destination.id}>
+    <div>
       <div className={styles.addedDestination}>
         <p>{destination.name}</p>
         <button onClick={handleDeleteDestination}>x</button>
