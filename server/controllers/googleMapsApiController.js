@@ -46,9 +46,10 @@ exports.getPlaces = async (req, res) => {
     lat: req.query.lat,
     lng: req.query.lng,
   };
+  const type = req.query.type;
   try {
     const response = await axios.get(
-      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat}%2C${location.lng}&radius=10000&type=tourist_attraction&key=${API_KEY}`
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat}%2C${location.lng}&radius=10000&type=${type}&key=${API_KEY}`
     );
     res.json(response.data);
   } catch (err) {

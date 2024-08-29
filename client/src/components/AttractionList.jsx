@@ -3,6 +3,7 @@ import AttractionItem from "./AttractionItem";
 import { usePlace } from "../context/PlaceContext";
 import Spinner from "../components/UI/Spinner";
 import DestinationNav from "./DestinationNav";
+import Filters from "./Filters";
 function AttractionList() {
   const { places, isLoading } = usePlace();
   return (
@@ -12,6 +13,7 @@ function AttractionList() {
         <Spinner />
       ) : (
         <>
+          <Filters />
           {places.length === 0 ? (
             <h3 className={styles.message}>First Choose a destination</h3>
           ) : (

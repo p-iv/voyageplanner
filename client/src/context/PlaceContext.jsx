@@ -7,6 +7,7 @@ const initialState = {
   currentPlace: {},
   isLoading: false,
   location: {},
+  filter: "",
   error: "",
 };
 
@@ -29,13 +30,16 @@ function reducer(state, action) {
         currentPlace: action.payload,
         isLoading: false,
       };
-
     case "location/got":
       return {
         ...state,
         location: action.payload,
       };
-
+    case "filter/changed":
+      return {
+        ...state,
+        filter: action.payload,
+      };
     case "rejected":
       return {
         ...state,
@@ -48,10 +52,8 @@ function reducer(state, action) {
 }
 
 function PlaceProvider({ children }) {
-  const [{ places, currentPlace, isLoading, location }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ places, currentPlace, isLoading, location, filter }, dispatch] =
+    useReducer(reducer, initialState);
 
   useEffect(
     function () {
@@ -59,7 +61,7 @@ function PlaceProvider({ children }) {
         dispatch({ type: "loading" });
         try {
           const res = await fetch(
-            `https://voyageplanner-server.vercel.app/api/googleMapsApi/places?lat=${location.lat}&lng=${location.lng}`
+            `https://voyageplanner-server.vercel.app/api/googleMapsApi/places?lat=${location.lat}&lng=${location.lng}&type=${filter}`
           );
           const data = await res.json();
           dispatch({ type: "places/loaded", payload: data.results });
@@ -69,7 +71,7 @@ function PlaceProvider({ children }) {
       }
       fetchPlaces();
     },
-    [location]
+    [location, filter]
   );
 
   function getLocation(location) {
@@ -88,10 +90,17 @@ function PlaceProvider({ children }) {
       dispatch({ type: "rejected", payload: "Something went wrong" });
     }
   }
-
+  console.log(filter);
   return (
     <PlaceContext.Provider
-      value={{ getLocation, places, getPlace, isLoading, currentPlace }}
+      value={{
+        getLocation,
+        places,
+        getPlace,
+        isLoading,
+        currentPlace,
+        dispatch,
+      }}
     >
       {children}
     </PlaceContext.Provider>

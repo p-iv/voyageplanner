@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useTrip } from "../context/NewTripContext";
+
 import styles from "./Trip.module.css";
 import TripDestination from "./TripDestination";
-import { useTrip } from "../context/NewTripContext";
 
 function Trip({ trip }) {
   const [activeViewDestinations, setActiveViewDestinations] = useState(false);
@@ -19,6 +20,7 @@ function Trip({ trip }) {
   const handleDeleteDestination = () => {
     dispatch({ type: "delete/trip", payload: trip.id });
   };
+
   return (
     <li className={styles.tripItem}>
       <div className={styles.trip}>
