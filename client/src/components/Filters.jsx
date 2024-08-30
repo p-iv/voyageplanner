@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { usePlace } from "../context/PlaceContext";
-import styles from "./Filters.module.css";
+import { FilterOutlined } from "@ant-design/icons";
+import styles from "./Filters.module.scss";
 
 const filterOptions = [
   { label: "Tourist Attractions", value: "tourist_attraction" },
@@ -16,6 +17,7 @@ const filterOptions = [
 const Filters = () => {
   const { dispatch } = usePlace();
   const [selectedFilters, setSelectedFilters] = useState("");
+  const [showFilters, setShowFilters] = useState(false);
 
   const handleCheckboxChange = (event) => {
     const { value } = event.target;
@@ -23,26 +25,44 @@ const Filters = () => {
   };
 
   const handleApplyFilters = () => {
-    if (selectedFilters != "")
+    if (selectedFilters != "") {
       dispatch({ type: "filter/changed", payload: selectedFilters });
+      setShowFilters(false);
+    }
   };
 
   return (
-    <div className="filters">
-      <h3>Filter by:</h3>
-      {filterOptions.map((filter) => (
-        <label key={filter.value}>
-          <input
-            type="checkbox"
-            value={filter.value}
-            checked={selectedFilters.includes(filter.value)}
-            onChange={handleCheckboxChange}
-          />
-          {filter.label}
-        </label>
-      ))}
-      <button onClick={handleApplyFilters}>Apply Filters</button>
-    </div>
+    <>
+      {showFilters ? (
+        <div className={styles.filters}>
+          <div className={styles.filterHeader}>
+            <span>
+              <FilterOutlined />
+            </span>
+            <h3 className={styles.filterTitle}>Filter by:</h3>
+          </div>
+
+          {filterOptions.map((filter) => (
+            <label key={filter.value} className={styles.filterLabel}>
+              <input
+                type="checkbox"
+                value={filter.value}
+                checked={selectedFilters.includes(filter.value)}
+                onChange={handleCheckboxChange}
+              />
+              <span>{filter.label}</span>
+            </label>
+          ))}
+          <button onClick={handleApplyFilters} className={styles.applyButton}>
+            Apply Filters
+          </button>
+        </div>
+      ) : (
+        <span onClick={() => setShowFilters(true)}>
+          <FilterOutlined />
+        </span>
+      )}
+    </>
   );
 };
 

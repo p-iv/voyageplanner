@@ -1,5 +1,5 @@
 import PlannerNav from "./PlannerNav";
-import styles from "./LeftBar.module.css";
+import styles from "./LeftBar.module.scss";
 
 function LeftBar() {
   return (

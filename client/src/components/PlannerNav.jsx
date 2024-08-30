@@ -1,4 +1,4 @@
-import styles from "./PlannerNav.module.css";
+import styles from "./PlannerNav.module.scss";
 import AddTrip from "./features/addTrip/AddTrip";
 
 import TripList from "./TripList";

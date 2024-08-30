@@ -1,4 +1,4 @@
-import styles from "./RightBar.module.css";
+import styles from "./RightBar.module.scss";
 import MapComponent from "./MapComponent";
 import AppContent from "./AppContent";
 import { useTrip } from "../context/NewTripContext";

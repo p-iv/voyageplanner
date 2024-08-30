@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { usePlace } from "../context/PlaceContext";
-import styles from "./Attractions.module.css";
+import styles from "./Attractions.module.scss";
 import { useDestination } from "../context/DestinationContext";
 
 import AttractionList from "./AttractionList";

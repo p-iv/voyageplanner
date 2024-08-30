@@ -1,6 +1,6 @@
 import { useTrip } from "../context/NewTripContext";
 import Trip from "./Trip";
-import styles from "./TripList.module.css";
+import styles from "./TripList.module.scss";
 
 function TripList() {
   const { trips } = useTrip();

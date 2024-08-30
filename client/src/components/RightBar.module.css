@@ -1,4 +1,0 @@
-.rightBar {
-  width: clamp(70%, 60%, 50%);
-  display: flex;
-}

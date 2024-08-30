@@ -1,4 +1,4 @@
-import styles from "./AppLayout.module.css";
+import styles from "./AppLayout.module.scss";
 import PageNav from "../components/PageNav";
 import RightBar from "../components/RightBar";
 import LeftBar from "../components/LeftBar";

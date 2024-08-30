@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { usePlace } from "../context/PlaceContext";
 import { useTrip } from "../context/NewTripContext";
 
-import styles from "./Attraction.module.css";
+import styles from "./Attraction.module.scss";
 import Spinner from "./UI/Spinner";
 import ImageCarousel from "./ImageCarousel";
 import StarRating from "./UI/StarRating";

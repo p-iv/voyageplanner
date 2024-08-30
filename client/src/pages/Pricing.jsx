@@ -1,4 +1,4 @@
-import styles from "./Pricing.module.css";
+import styles from "./Pricing.module.scss";
 
 import AppNav from "../components/AppNav";
 function Product() {

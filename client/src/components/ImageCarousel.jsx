@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Carousel } from "antd";
 import Image from "./UI/Image";
-import styles from "./ImageCarousel.module.css";
+import styles from "./ImageCarousel.module.scss";
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 const ImageCarousel = memo(function ImageCarousel({

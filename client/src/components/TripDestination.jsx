@@ -1,4 +1,4 @@
-import styles from "./TripDestination.module.css";
+import styles from "./TripDestination.module.scss";
 
 function TripDestination({ destination }) {
   return (

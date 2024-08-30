@@ -1,4 +1,4 @@
-import styles from "./Image.module.css";
+import styles from "./Image.module.scss";
 
 function Image({ source, alt_text, type }) {
   return (

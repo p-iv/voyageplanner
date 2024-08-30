@@ -1,4 +1,4 @@
-import styles from "./AppNav.module.css";
+import styles from "./AppNav.module.scss";
 import Logo from "./UI/Logo";
 import { NavLink } from "react-router-dom";
 

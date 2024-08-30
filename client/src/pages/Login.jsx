@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Login.module.css";
+import styles from "./Login.module.scss";
 import AppNav from "../components/AppNav";
 import Button from "../components/UI/Button";
 

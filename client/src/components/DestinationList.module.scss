@@ -1,0 +1,22 @@
+.destinationlist {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  align-items: center;
+}
+.destinationlist input {
+  width: 40rem;
+  background-color: var(--color-light-1);
+  border-bottom: 2px solid var(--color-light-2);
+  margin-top: 2rem;
+}
+.autocompletelist {
+  min-width: 40rem;
+  background-color: var(--color-light-1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  margin-top: 2rem;
+}

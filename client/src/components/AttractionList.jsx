@@ -1,4 +1,4 @@
-import styles from "./AttractionList.module.css";
+import styles from "./AttractionList.module.scss";
 import AttractionItem from "./AttractionItem";
 import { usePlace } from "../context/PlaceContext";
 import Spinner from "../components/UI/Spinner";

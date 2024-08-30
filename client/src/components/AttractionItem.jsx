@@ -1,4 +1,4 @@
-import styles from "./AttractionItem.module.css";
+import styles from "./AttractionItem.module.scss";
 import Image from "../components/UI/Image";
 import { Link } from "react-router-dom";
 import Button from "./UI/Button";

@@ -1,4 +1,4 @@
-import styles from "./DestinationNav.module.css";
+import styles from "./DestinationNav.module.scss";
 import { NavLink } from "react-router-dom";
 
 function DestinationNav() {

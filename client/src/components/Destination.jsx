@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import styles from "./Destination.module.css";
+import styles from "./Destination.module.scss";
 import { useDestination } from "../context/DestinationContext";
 
 import ImageCarousel from "./ImageCarousel";

@@ -1,0 +1,28 @@
+.attractionList {
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.message {
+  font-size: 2rem;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-light-2);
+}

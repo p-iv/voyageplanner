@@ -5,7 +5,7 @@ import {
   AdvancedMarker,
   Pin,
 } from "@vis.gl/react-google-maps";
-import styles from "./MapComponent.module.css";
+import styles from "./MapComponent.module.scss";
 import { useEffect, useState } from "react";
 import { useDestination } from "../context/DestinationContext";
 import { usePlace } from "../context/PlaceContext";

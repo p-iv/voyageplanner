@@ -1,5 +1,5 @@
 import AppNav from "../components/AppNav";
-import styles from "./Product.module.css";
+import styles from "./Product.module.scss";
 
 function Product() {
   return (

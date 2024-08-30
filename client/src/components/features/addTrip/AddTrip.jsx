@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./AddTrip.module.css";
+import styles from "./AddTrip.module.scss";
 import AddTripForm from "./AddTripForm";
 
 function AddTrip() {

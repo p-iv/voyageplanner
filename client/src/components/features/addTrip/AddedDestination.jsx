@@ -1,4 +1,4 @@
-import styles from "./AddedDestination.module.css";
+import styles from "./AddedDestination.module.scss";
 import Image from "../../UI/Image";
 import { useTrip } from "../../../context/NewTripContext";
 

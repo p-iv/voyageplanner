@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Schedule.module.css";
+import styles from "./Schedule.module.scss";
 import { DatePicker, Space } from "antd";
 import Button from "./UI/Button";
 import { useTrip } from "../context/NewTripContext";

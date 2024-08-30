@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTrip } from "../context/NewTripContext";
 
-import styles from "./Trip.module.css";
+import styles from "./Trip.module.scss";
 import TripDestination from "./TripDestination";
 
 function Trip({ trip }) {

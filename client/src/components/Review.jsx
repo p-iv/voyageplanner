@@ -1,4 +1,4 @@
-import styles from "./Review.module.css";
+import styles from "./Review.module.scss";
 import StarRating from "./UI/StarRating";
 
 function Review({ review }) {

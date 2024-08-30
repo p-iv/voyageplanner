@@ -1,0 +1,32 @@
+.destinationImage {
+  margin: 0;
+  height: 30rem;
+  width: 100%;
+  background: #364d79;
+}
+.attractionItemImage {
+  border-radius: 2rem;
+  margin: 0;
+
+  background: #364d79;
+  width: 100%;
+}
+.attractionImage {
+  border-radius: 2rem;
+  margin: 0;
+  height: 30rem;
+  background: #364d79;
+  width: 100%;
+}
+.imageContainer {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+.addedAttractionImage {
+  margin: 0;
+  height: 10rem;
+  width: 100%;
+  background: #364d79;
+}

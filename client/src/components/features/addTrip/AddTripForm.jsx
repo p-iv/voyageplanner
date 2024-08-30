@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./AddTripForm.module.css";
+import styles from "./AddTripForm.module.scss";
 import { v4 as uuidv4 } from "uuid";
 import Button from "./../../UI/Button";
 import AddDestination from "./AddDestination";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./AddDestination.module.css";
+import styles from "./AddDestination.module.scss";
 import { Link } from "react-router-dom";
 import { useTrip } from "../../../context/NewTripContext";
 import { v4 as uuidv4 } from "uuid";

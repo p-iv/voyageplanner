@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDestination } from "../context/DestinationContext";
 import AutocompleteItem from "./AutocompleteItem";
-import styles from "./DestinationList.module.css";
+import styles from "./DestinationList.module.scss";
 
 function DestinationList() {
   const { dispatch, autocomplete } = useDestination();

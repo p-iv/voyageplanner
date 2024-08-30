@@ -1,0 +1,57 @@
+.tripItem {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-dark-2);
+  border-radius: 2rem;
+  padding: 1rem;
+  width: 95%;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.tripItem:hover {
+  transform: scale(1.02);
+}
+.trip {
+  height: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tripItem p {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+.viewDestinationsButton,
+.deleteDestinationButton {
+  border-radius: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-dark-2);
+}
+.viewDestinationsButton {
+  border: 1px solid var(--brand-color);
+  color: var(--brand-color);
+}
+.deleteDestinationButton {
+  border: 1px solid #d12525;
+  color: #d12525;
+}
+.viewDestinationsButton:hover {
+  background-color: var(--brand-color);
+  color: var(--color-light-1);
+  cursor: pointer;
+}
+.deleteDestinationButton:hover {
+  background-color: #d12525;
+  color: var(--color-light-1);
+
+  cursor: pointer;
+}
+.destinations {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

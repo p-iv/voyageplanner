@@ -1,5 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
-import styles from "./AutocompleteItem.module.css";
+import styles from "./AutocompleteItem.module.scss";
 import { Link } from "react-router-dom";
 
 function AutocompleteItem({ value, setQuery, dispatch }) {

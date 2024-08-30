@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./PageNav.module.css";
+import styles from "./PageNav.module.scss";
 import { Button, Layout, Menu, theme } from "antd";
 import {
   HomeOutlined,
