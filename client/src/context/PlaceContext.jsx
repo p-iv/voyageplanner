@@ -90,7 +90,7 @@ function PlaceProvider({ children }) {
       dispatch({ type: "rejected", payload: "Something went wrong" });
     }
   }
-  console.log(filter);
+
   return (
     <PlaceContext.Provider
       value={{
