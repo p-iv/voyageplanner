@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import SpinnerFullPage from "./components/UI/SpinnerFullPage";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import DestinationList from "./components/DestinationList";
 import Destination from "./components/Destination";
 import Attractions from "./components/Attractions";
@@ -20,36 +21,39 @@ const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 function App() {
   return (
-    <NewTripProvider>
-      <PlaceProvider>
-        <DestinationProvider>
-          <BrowserRouter>
-            <Suspense fallback={<SpinnerFullPage />}>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/pricing" element={<Pricing />} />
-                <Route path="/product" element={<Product />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/app" element={<AppLayout />}>
-                  <Route path="destination" element={<DestinationList />} />
-                  <Route
-                    path="destination/:destinationId"
-                    element={<Destination />}
-                  />
-                  <Route path="attractions" element={<Attractions />} />
-                  <Route
-                    path="attractions/:attractionId"
-                    element={<Attraction />}
-                  />
-                  <Route path="schedule" element={<Schedule />} />
-                </Route>
-                <Route path="*" element={<PageNotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </DestinationProvider>
-      </PlaceProvider>
-    </NewTripProvider>
+    <>
+      <NewTripProvider>
+        <PlaceProvider>
+          <DestinationProvider>
+            <BrowserRouter>
+              <Suspense fallback={<SpinnerFullPage />}>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/pricing" element={<Pricing />} />
+                  <Route path="/product" element={<Product />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/app" element={<AppLayout />}>
+                    <Route path="destination" element={<DestinationList />} />
+                    <Route
+                      path="destination/:destinationId"
+                      element={<Destination />}
+                    />
+                    <Route path="attractions" element={<Attractions />} />
+                    <Route
+                      path="attractions/:attractionId"
+                      element={<Attraction />}
+                    />
+                    <Route path="schedule" element={<Schedule />} />
+                  </Route>
+                  <Route path="*" element={<PageNotFound />} />
+                </Routes>
+              </Suspense>
+            </BrowserRouter>
+          </DestinationProvider>
+        </PlaceProvider>
+      </NewTripProvider>
+      <SpeedInsights />
+    </>
   );
 }
 
