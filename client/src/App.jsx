@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import SpinnerFullPage from "./components/UI/SpinnerFullPage";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import DestinationList from "./components/DestinationList";
 import Destination from "./components/Destination";
 import Attractions from "./components/Attractions";
