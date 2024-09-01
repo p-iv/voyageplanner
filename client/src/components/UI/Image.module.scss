@@ -1,7 +1,6 @@
 .destinationImage {
   margin: 0;
-  height: 30rem;
-  width: 100%;
+  aspect-ratio: 16/10;
   background: #364d79;
 }
 .attractionItemImage {
@@ -9,7 +8,7 @@
   margin: 0;
 
   background: #364d79;
-  width: 100%;
+  aspect-ratio: auto;
 }
 .attractionImage {
   border-radius: 2rem;
@@ -21,8 +20,6 @@
 .imageContainer {
   display: flex;
   justify-content: center;
-
-  width: 100%;
 }
 .addedAttractionImage {
   margin: 0;

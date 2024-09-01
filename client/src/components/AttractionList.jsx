@@ -9,7 +9,10 @@ function AttractionList() {
   return (
     <>
       <DestinationNav />
-      <Filters />
+      <div className={styles.filters}>
+        <Filters />
+      </div>
+
       {isLoading ? (
         <Spinner />
       ) : (

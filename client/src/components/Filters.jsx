@@ -58,8 +58,11 @@ const Filters = () => {
           </button>
         </div>
       ) : (
-        <span onClick={() => setShowFilters(true)}>
-          <FilterOutlined />
+        <span
+          onClick={() => setShowFilters(true)}
+          className={styles.filterButton}
+        >
+          <FilterOutlined /> Filters
         </span>
       )}
     </>

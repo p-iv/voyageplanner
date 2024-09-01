@@ -1,14 +1,13 @@
 import { useState } from "react";
+import { useTrip } from "../../../context/NewTripContext";
 import styles from "./AddTripForm.module.scss";
+
 import { v4 as uuidv4 } from "uuid";
 import Button from "./../../UI/Button";
 import AddDestination from "./AddDestination";
-import { useTrip } from "../../../context/NewTripContext";
-import { usePlace } from "../../../context/PlaceContext";
 
 function AddTripForm({ setActiveForm, activeForm }) {
   const [tripName, setTripName] = useState("");
-
   const { dispatch, destinations } = useTrip();
 
   const newTrip = {

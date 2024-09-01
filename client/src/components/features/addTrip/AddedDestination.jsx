@@ -1,6 +1,7 @@
-import styles from "./AddedDestination.module.scss";
-import Image from "../../UI/Image";
 import { useTrip } from "../../../context/NewTripContext";
+import styles from "./AddedDestination.module.scss";
+
+import Image from "../../UI/Image";
 
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 

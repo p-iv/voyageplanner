@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styles from "./AddTrip.module.scss";
+
 import AddTripForm from "./AddTripForm";
 
 function AddTrip() {
   const [activeForm, setActiveForm] = useState(false);
+
   return (
     <div className={styles.addTrip}>
       {!activeForm ? (

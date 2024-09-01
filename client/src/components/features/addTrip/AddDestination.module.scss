@@ -7,11 +7,12 @@
   border: 1px solid var(--color-dark-2);
   background-color: var(--color-dark-1);
   color: var(--color-light-2);
-}
-.addDestinationButton:hover {
-  background-color: var(--color-dark-2);
-  color: var(--color-light-1);
-  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-dark-2);
+    color: var(--color-light-1);
+    cursor: pointer;
+  }
 }
 
 .destinationList {
@@ -20,10 +21,12 @@
   gap: 2rem;
   max-height: 45rem;
   overflow: auto;
+
+  h3 {
+    font-size: 1.5rem;
+  }
 }
-.destinationList h3 {
-  font-size: 1.5rem;
-}
+
 .confirmDestinationButton {
   width: 100%;
   height: 8rem;
@@ -32,29 +35,26 @@
   border: 1px solid var(--brand-color);
   background-color: var(--color-dark-1);
   color: var(--brand-color);
+
+  &:hover {
+    background-color: var(--brand-color);
+    color: var(--color-light-1);
+    cursor: pointer;
+  }
 }
 
-.confirmDestinationButton:hover {
-  background-color: var(--brand-color);
-  color: var(--color-light-1);
-  cursor: pointer;
-}
-/* width */
 ::-webkit-scrollbar {
   width: 2px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: var(--color-dark-0);
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--color-dark-2);
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-light-2);
 }
