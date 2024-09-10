@@ -1,16 +1,16 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
+import { DestinationProvider } from "./context/DestinationContext";
+import { PlaceProvider } from "./context/PlaceContext";
+import { NewTripProvider } from "./context/NewTripContext";
+
 import SpinnerFullPage from "./components/UI/SpinnerFullPage";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import DestinationList from "./components/DestinationList";
 import Destination from "./components/Destination";
 import Attractions from "./components/Attractions";
-import Schedule from "./components/Schedule";
-import { DestinationProvider } from "./context/DestinationContext";
-import { PlaceProvider } from "./context/PlaceContext";
 import Attraction from "./components/Attraction";
-import { NewTripProvider } from "./context/NewTripContext";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Product = lazy(() => import("./pages/Product"));
@@ -22,10 +22,11 @@ const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 function App() {
   return (
     <>
-      <NewTripProvider>
-        <PlaceProvider>
-          <DestinationProvider>
-            <BrowserRouter>
+      <BrowserRouter>
+        <SpeedInsights />
+        <NewTripProvider>
+          <PlaceProvider>
+            <DestinationProvider>
               <Suspense fallback={<SpinnerFullPage />}>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
@@ -43,16 +44,14 @@ function App() {
                       path="attractions/:attractionId"
                       element={<Attraction />}
                     />
-                    <Route path="schedule" element={<Schedule />} />
                   </Route>
                   <Route path="*" element={<PageNotFound />} />
                 </Routes>
               </Suspense>
-            </BrowserRouter>
-          </DestinationProvider>
-        </PlaceProvider>
-      </NewTripProvider>
-      <SpeedInsights />
+            </DestinationProvider>
+          </PlaceProvider>
+        </NewTripProvider>
+      </BrowserRouter>
     </>
   );
 }

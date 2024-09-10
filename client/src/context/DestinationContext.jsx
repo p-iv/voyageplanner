@@ -67,29 +67,26 @@ function DestinationProvider({ children }) {
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  useEffect(
-    function () {
-      async function fetchAutocomplete() {
-        dispatch({ type: "loading" });
-        try {
-          const res = await fetch(
-            `https://voyageplanner-server.vercel.app/api/googleMapsApi/destinations?input=${query}`
-          );
-          const data = await res.json();
-          dispatch({ type: "autocomplete/loaded", payload: data.predictions });
-        } catch {
-          dispatch({
-            type: "rejected",
-            payload: "There was an error loading data...",
-          });
-        }
+  useEffect(() => {
+    const fetchAutocomplete = async () => {
+      dispatch({ type: "loading" });
+      try {
+        const res = await fetch(
+          `https://voyageplanner-server.vercel.app/api/googleMapsApi/destinations?input=${query}`
+        );
+        const data = await res.json();
+        dispatch({ type: "autocomplete/loaded", payload: data.predictions });
+      } catch {
+        dispatch({
+          type: "rejected",
+          payload: "There was an error loading data...",
+        });
       }
-      fetchAutocomplete();
-    },
-    [query]
-  );
+    };
+    fetchAutocomplete();
+  }, [query]);
 
-  async function getDestination(id) {
+  const getDestination = async (id) => {
     dispatch({ type: "loading" });
     try {
       const res = await fetch(
@@ -103,9 +100,9 @@ function DestinationProvider({ children }) {
         payload: "There was an error loading data...",
       });
     }
-  }
+  };
 
-  async function getLocation(id) {
+  const getLocation = async (id) => {
     dispatch({ type: "loading" });
     try {
       const res = await fetch(
@@ -126,7 +123,7 @@ function DestinationProvider({ children }) {
         payload: "There was an error loading data...",
       });
     }
-  }
+  };
 
   return (
     <DestinationContext.Provider

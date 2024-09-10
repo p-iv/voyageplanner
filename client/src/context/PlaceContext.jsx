@@ -55,30 +55,27 @@ function PlaceProvider({ children }) {
   const [{ places, currentPlace, isLoading, location, filter }, dispatch] =
     useReducer(reducer, initialState);
 
-  useEffect(
-    function () {
-      async function fetchPlaces() {
-        dispatch({ type: "loading" });
-        try {
-          const res = await fetch(
-            `https://voyageplanner-server.vercel.app/api/googleMapsApi/places?lat=${location.lat}&lng=${location.lng}&type=${filter}`
-          );
-          const data = await res.json();
-          dispatch({ type: "places/loaded", payload: data.results });
-        } catch {
-          dispatch({ type: "rejected", payload: "Something went wrong" });
-        }
+  useEffect(() => {
+    const fetchPlaces = async () => {
+      dispatch({ type: "loading" });
+      try {
+        const res = await fetch(
+          `https://voyageplanner-server.vercel.app/api/googleMapsApi/places?lat=${location.lat}&lng=${location.lng}&type=${filter}`
+        );
+        const data = await res.json();
+        dispatch({ type: "places/loaded", payload: data.results });
+      } catch {
+        dispatch({ type: "rejected", payload: "Something went wrong" });
       }
-      fetchPlaces();
-    },
-    [location, filter]
-  );
+    };
+    fetchPlaces();
+  }, [location, filter]);
 
-  function getLocation(location) {
+  const getLocation = (location) => {
     dispatch({ type: "location/got", payload: location });
-  }
+  };
 
-  async function getPlace(id) {
+  const getPlace = async (id) => {
     dispatch({ type: "loading" });
     try {
       const res = await fetch(
@@ -89,7 +86,7 @@ function PlaceProvider({ children }) {
     } catch {
       dispatch({ type: "rejected", payload: "Something went wrong" });
     }
-  }
+  };
 
   return (
     <PlaceContext.Provider
