@@ -92,7 +92,9 @@ function NewTripProvider({ children }) {
   useEffect(() => {
     const fetchTrips = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/trips");
+        const res = await fetch(
+          "https://voyageplanner-server.vercel.app/api/trips"
+        );
         const data = await res.json();
         dispatch({ type: "set/trips", payload: data.data.trips });
       } catch (err) {
@@ -105,11 +107,14 @@ function NewTripProvider({ children }) {
 
   const createTrip = async (trip) => {
     try {
-      const res = await fetch("http://localhost:3001/api/trips", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(trip),
-      });
+      const res = await fetch(
+        "https://voyageplanner-server.vercel.app/api/trips",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(trip),
+        }
+      );
       const data = await res.json();
       dispatch({ type: "set/trips", payload: [...trips, data.data.trip] });
     } catch (err) {
