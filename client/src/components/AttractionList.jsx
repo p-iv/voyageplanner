@@ -10,7 +10,7 @@ function AttractionList() {
     <>
       <DestinationNav />
       <div className={styles.filters}>
-        <Filters />
+        {places.length != 0 ? <Filters /> : ""}
       </div>
 
       {isLoading ? (

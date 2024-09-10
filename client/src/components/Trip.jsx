@@ -10,15 +10,15 @@ function Trip({ trip }) {
 
   const handleViewDestinations = () => {
     setActiveViewDestinations(!activeViewDestinations);
-    if (selectedTrip === trip.id) {
+    if (selectedTrip === trip._id) {
       dispatch({ type: "set/selectedTrip", payload: null });
     } else {
-      dispatch({ type: "set/selectedTrip", payload: trip.id });
+      dispatch({ type: "set/selectedTrip", payload: trip._id });
     }
   };
 
   const handleDeleteDestination = () => {
-    dispatch({ type: "delete/trip", payload: trip.id });
+    dispatch({ type: "delete/trip", payload: trip._id });
   };
 
   return (

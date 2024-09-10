@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const NewTripContext = createContext();
 
@@ -7,9 +7,8 @@ const initialState = {
   destination: "",
   destinations: [],
   attractions: [],
-  trips: [],
   selectedTrip: null,
-  date: "",
+  trips: [],
   error: "",
 };
 
@@ -45,6 +44,11 @@ function reducer(state, action) {
         ...state,
         activeDestinationForm: action.payload,
       };
+    case "set/trips":
+      return {
+        ...state,
+        trips: action.payload,
+      };
 
     case "delete/destination":
       return {
@@ -53,16 +57,7 @@ function reducer(state, action) {
           (destination) => destination.id !== action.payload
         ),
       };
-    case "add/trip":
-      return {
-        ...state,
-        trips: [...state.trips, action.payload],
-      };
-    case "delete/trip":
-      return {
-        ...state,
-        trips: state.trips.filter((trip) => trip.id !== action.payload),
-      };
+
     case "set/selectedTrip":
       return {
         ...state,
@@ -84,13 +79,43 @@ function NewTripProvider({ children }) {
     {
       destination,
       attractions,
-      trips,
       destinations,
       activeDestinationForm,
       selectedTrip,
+      trips,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
+
+  console.log(attractions[1]);
+
+  useEffect(() => {
+    const fetchTrips = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/api/trips");
+        const data = await res.json();
+        dispatch({ type: "set/trips", payload: data.data.trips });
+      } catch (err) {
+        console.error(err);
+        dispatch({ type: "rejected", payload: "Failed to fetch trips" });
+      }
+    };
+    fetchTrips();
+  }, []);
+
+  const createTrip = async (trip) => {
+    try {
+      const res = await fetch("http://localhost:3001/api/trips", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(trip),
+      });
+      const data = await res.json();
+      dispatch({ type: "set/trips", payload: [...trips, data.data.trip] });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <NewTripContext.Provider
@@ -100,8 +125,9 @@ function NewTripProvider({ children }) {
         attractions,
         destination,
         activeDestinationForm,
-        trips,
         selectedTrip,
+        createTrip,
+        trips,
       }}
     >
       {children}

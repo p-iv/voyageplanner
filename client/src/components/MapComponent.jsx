@@ -25,7 +25,7 @@ function MapComponent() {
     trips,
   } = useTrip();
 
-  const trip = trips.find((trip) => trip.id === selectedTrip);
+  const trip = trips.find((trip) => trip._id === selectedTrip);
 
   useEffect(
     function () {

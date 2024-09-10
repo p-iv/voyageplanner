@@ -1,31 +1,29 @@
 import { useState } from "react";
 import { useTrip } from "../../../context/NewTripContext";
 import styles from "./AddTripForm.module.scss";
-
-import { v4 as uuidv4 } from "uuid";
 import Button from "./../../UI/Button";
 import AddDestination from "./AddDestination";
 
 function AddTripForm({ setActiveForm, activeForm }) {
   const [tripName, setTripName] = useState("");
-  const { dispatch, destinations } = useTrip();
+  const { dispatch, destinations, createTrip } = useTrip();
 
   const newTrip = {
-    id: uuidv4(),
     name: tripName.toUpperCase(),
     destinations: destinations,
   };
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     e.preventDefault();
     setTripName(e.target.value);
-  }
+  };
 
-  function handleSubmitTrip(e) {
+  const handleSubmitTrip = (e) => {
     if (tripName !== "" && destinations.length != 0) {
       e.preventDefault();
 
-      dispatch({ type: "add/trip", payload: newTrip });
+      createTrip(newTrip);
+      dispatch({ type: "set/attractions", payload: [] });
       dispatch({ type: "set/destinations", payload: [] });
       dispatch({ type: "set/activeDestinationForm", payload: false });
       setActiveForm(!activeForm);
@@ -33,7 +31,7 @@ function AddTripForm({ setActiveForm, activeForm }) {
     } else {
       alert("Please enter a trip name and add at least one destination");
     }
-  }
+  };
 
   return (
     <div className={styles.tripForm}>

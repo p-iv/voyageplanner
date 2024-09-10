@@ -1,42 +1,39 @@
-const fs = require("fs");
+const Trip = require("./../models/tripModel");
 
-exports.createTrip = (req, res) => {
-  const newTrip = req.body;
+exports.getAllTrips = async (req, res) => {
+  try {
+    const trips = await Trip.find();
 
-  fs.readFile(`${__dirname}/../data/tripData.json`, "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: "Failed to read data" });
-    }
+    res.status(200).json({
+      status: "success",
+      results: trips.length,
+      data: {
+        trips,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: "No trips found",
+    });
+  }
+};
 
-    let existingTrips = [];
+exports.createTrip = async (req, res) => {
+  try {
+    const newTrip = await Trip.create(req.body);
 
-    try {
-      existingTrips = JSON.parse(data);
-      if (!Array.isArray(existingTrips)) existingTrips = [];
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({ error: "Failed to parse data" });
-    }
-
-    existingTrips.push(newTrip);
-
-    fs.writeFile(
-      `${__dirname}/data/tripData.json`,
-      JSON.stringify(existingTrips, null, 2),
-      (err) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).json({ error: "Failed to write data" });
-        }
-
-        res.status(201).json({
-          status: "success",
-          data: {
-            tripData: existingTrips,
-          },
-        });
-      }
-    );
-  });
+    res.status(201).json({
+      status: "success",
+      data: {
+        trip: newTrip,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: "Invalid data sent",
+      error: err.message,
+    });
+  }
 };

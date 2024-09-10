@@ -7,7 +7,7 @@ function TripList() {
   return (
     <ul className={styles.tripList}>
       {trips?.map((trip) => (
-        <Trip key={trip.id} trip={trip} />
+        <Trip key={trip._id} trip={trip} />
       ))}
     </ul>
   );
