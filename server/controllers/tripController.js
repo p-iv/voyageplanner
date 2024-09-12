@@ -37,3 +37,22 @@ exports.createTrip = async (req, res) => {
     });
   }
 };
+
+exports.deleteTrip = async (req, res) => {
+  try {
+    const trip = await Trip.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      status: "success",
+      message: "Trip deleted successfully",
+      data: {
+        trip,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: "Trip not found",
+      error: err.message,
+    });
+  }
+};

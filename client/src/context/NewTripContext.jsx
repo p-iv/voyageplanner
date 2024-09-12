@@ -57,7 +57,11 @@ function reducer(state, action) {
           (destination) => destination.id !== action.payload
         ),
       };
-
+    case "delete/trip":
+      return {
+        ...state,
+        trips: state.trips.filter((trip) => trip._id !== action.payload),
+      };
     case "set/selectedTrip":
       return {
         ...state,
@@ -119,6 +123,24 @@ function NewTripProvider({ children }) {
       dispatch({ type: "set/trips", payload: [...trips, data.data.trip] });
     } catch (err) {
       console.error(err);
+      dispatch({ type: "rejected", payload: "Failed to create trip" });
+    }
+  };
+
+  const deleteTrip = async (id) => {
+    try {
+      const res = await fetch(
+        `https://voyageplanner-server.vercel.app/api/trips/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (res.ok) {
+        dispatch({ type: "delete/trip", payload: id });
+      }
+    } catch (err) {
+      console.error(err);
+      dispatch({ type: "rejected", payload: "Failed to delete trip" });
     }
   };
 
@@ -132,6 +154,7 @@ function NewTripProvider({ children }) {
         activeDestinationForm,
         selectedTrip,
         createTrip,
+        deleteTrip,
         trips,
       }}
     >

@@ -6,7 +6,7 @@ import TripDestination from "./TripDestination";
 
 function Trip({ trip }) {
   const [activeViewDestinations, setActiveViewDestinations] = useState(false);
-  const { dispatch, selectedTrip } = useTrip();
+  const { dispatch, selectedTrip, deleteTrip } = useTrip();
 
   const handleViewDestinations = () => {
     setActiveViewDestinations(!activeViewDestinations);
@@ -17,8 +17,10 @@ function Trip({ trip }) {
     }
   };
 
-  const handleDeleteDestination = () => {
-    dispatch({ type: "delete/trip", payload: trip._id });
+  const handleDeleteTrip = () => {
+    if (window.confirm("Are you sure you want to delete this trip?")) {
+      deleteTrip(trip._id);
+    }
   };
 
   return (
@@ -34,7 +36,7 @@ function Trip({ trip }) {
           </button>
           <button
             className={styles.deleteDestinationButton}
-            onClick={handleDeleteDestination}
+            onClick={handleDeleteTrip}
           >
             Delete Trip
           </button>

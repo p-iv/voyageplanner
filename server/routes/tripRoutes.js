@@ -7,4 +7,6 @@ router
   .get(tripController.getAllTrips)
   .post(tripController.createTrip);
 
+router.route("/:id").delete(tripController.deleteTrip);
+
 module.exports = router;
