@@ -1,4 +1,5 @@
 .tripForm {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -7,8 +8,25 @@
   border: 2px solid var(--color-dark-2);
   border-radius: 2rem;
   padding: 2rem;
+
+  input {
+    font-size: 1.5rem;
+  }
 }
 
-.input {
-  font-size: 1.2rem;
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .tripForm {
+    width: 90%;
+    input {
+      font-size: 1.7rem;
+      padding: 1rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1280) {
+}
+@media only screen and (min-width: 768px) and (max-width: 1024) {
+}
+@media only screen and (min-width: 640px) and (max-width: 768) {
 }

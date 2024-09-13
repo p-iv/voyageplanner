@@ -36,7 +36,6 @@ function AddTripForm({ setActiveForm, activeForm }) {
   return (
     <div className={styles.tripForm}>
       <input
-        className={styles.input}
         value={tripName}
         type="text"
         placeholder="Enter a trip name"

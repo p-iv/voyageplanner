@@ -14,7 +14,7 @@ function DestinationList() {
   }
 
   return (
-    <div className={styles.destinationlist}>
+    <div className={styles.destinationList}>
       <input
         value={query}
         type="text"
@@ -25,7 +25,7 @@ function DestinationList() {
       {!autocomplete.length ? (
         ""
       ) : (
-        <ul className={styles.autocompletelist}>
+        <ul className={styles.autocompleteList}>
           {autocomplete.map((value) => (
             <AutocompleteItem
               dispatch={dispatch}
