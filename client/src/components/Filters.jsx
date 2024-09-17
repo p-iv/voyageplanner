@@ -36,10 +36,13 @@ const Filters = () => {
       {showFilters ? (
         <div className={styles.filters}>
           <div className={styles.filterHeader}>
-            <span>
-              <FilterOutlined />
-            </span>
-            <h3 className={styles.filterTitle}>Filter by:</h3>
+            <div>
+              <span>
+                <FilterOutlined />
+              </span>
+              <h3>Filter by:</h3>
+            </div>
+            <button onClick={() => setShowFilters(false)}>X</button>
           </div>
 
           {filterOptions.map((filter) => (

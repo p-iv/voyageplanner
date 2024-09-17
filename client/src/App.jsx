@@ -11,6 +11,7 @@ import DestinationList from "./components/DestinationList";
 import Destination from "./components/Destination";
 import Attractions from "./components/Attractions";
 import Attraction from "./components/Attraction";
+import SignUp from "./pages/SignUp";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Product = lazy(() => import("./pages/Product"));
@@ -33,6 +34,7 @@ function App() {
                   <Route path="/pricing" element={<Pricing />} />
                   <Route path="/product" element={<Product />} />
                   <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<SignUp />} />
                   <Route path="/app" element={<AppLayout />}>
                     <Route path="destination" element={<DestinationList />} />
                     <Route

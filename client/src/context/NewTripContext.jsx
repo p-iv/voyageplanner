@@ -91,8 +91,6 @@ function NewTripProvider({ children }) {
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  console.log(attractions[1]);
-
   useEffect(() => {
     const fetchTrips = async () => {
       try {

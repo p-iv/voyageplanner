@@ -9,15 +9,29 @@
 .filterHeader {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
   color: var(--color-dark-1);
   font-size: 1.5rem;
   margin-bottom: 1rem;
 
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
   h3 {
     font-size: 1.2em;
     color: #333;
+  }
+  button {
+    padding: 0.3rem 0.7 rem;
+    font-size: 1em;
+    color: var(--color-light-1);
+    background-color: var(--brand-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
 }
 .filterLabel {

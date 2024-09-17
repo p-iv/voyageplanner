@@ -14,7 +14,7 @@ function Destination() {
   const { destinationId } = useParams();
   const { getDestination, currentDestination, isLoading, getLocation } =
     useDestination();
-  const { dispatch, destination } = useTrip();
+  const { dispatch } = useTrip();
   const photos = currentDestination.photos;
 
   useEffect(

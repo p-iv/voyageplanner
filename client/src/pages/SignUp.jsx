@@ -1,17 +1,19 @@
 import { useState } from "react";
-import styles from "./Login.module.scss";
+import styles from "./SignUp.module.scss";
 import AppNav from "../components/AppNav";
 import { Link } from "react-router-dom";
 
-export default function Login() {
+function SignUp() {
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmedPassword, setConfirmedPassword] = useState("");
 
   return (
     <main className={styles.login}>
       <AppNav />
       <form className={styles.form}>
-        <h1>Log In</h1>
+        <h1>Sign Up</h1>
 
         <input
           type="name"
@@ -21,20 +23,36 @@ export default function Login() {
         />
 
         <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Log In</button>
+
+        <input
+          type="password"
+          placeholder="Confirm password"
+          value={confirmedPassword}
+          onChange={(e) => setConfirmedPassword(e.target.value)}
+        />
+        <button>Sign Up</button>
 
         <p>
-          Don't have an account?{" "}
-          <Link to="/signup">
-            <b>Sign Up</b>
+          Do you have an account?{" "}
+          <Link to="/login">
+            <b>Log in</b>
           </Link>
         </p>
       </form>
     </main>
   );
 }
+
+export default SignUp;
