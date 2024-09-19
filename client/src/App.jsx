@@ -12,6 +12,7 @@ import Destination from "./components/Destination";
 import Attractions from "./components/Attractions";
 import Attraction from "./components/Attraction";
 import SignUp from "./pages/SignUp";
+import { AuthProvider } from "./context/AuthContext";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Product = lazy(() => import("./pages/Product"));
@@ -25,34 +26,36 @@ function App() {
     <>
       <BrowserRouter>
         <SpeedInsights />
-        <NewTripProvider>
-          <PlaceProvider>
-            <DestinationProvider>
-              <Suspense fallback={<SpinnerFullPage />}>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/pricing" element={<Pricing />} />
-                  <Route path="/product" element={<Product />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<SignUp />} />
-                  <Route path="/app" element={<AppLayout />}>
-                    <Route path="destination" element={<DestinationList />} />
-                    <Route
-                      path="destination/:destinationId"
-                      element={<Destination />}
-                    />
-                    <Route path="attractions" element={<Attractions />} />
-                    <Route
-                      path="attractions/:attractionId"
-                      element={<Attraction />}
-                    />
-                  </Route>
-                  <Route path="*" element={<PageNotFound />} />
-                </Routes>
-              </Suspense>
-            </DestinationProvider>
-          </PlaceProvider>
-        </NewTripProvider>
+        <AuthProvider>
+          <NewTripProvider>
+            <PlaceProvider>
+              <DestinationProvider>
+                <Suspense fallback={<SpinnerFullPage />}>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route path="/product" element={<Product />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/app" element={<AppLayout />}>
+                      <Route path="destination" element={<DestinationList />} />
+                      <Route
+                        path="destination/:destinationId"
+                        element={<Destination />}
+                      />
+                      <Route path="attractions" element={<Attractions />} />
+                      <Route
+                        path="attractions/:attractionId"
+                        element={<Attraction />}
+                      />
+                    </Route>
+                    <Route path="*" element={<PageNotFound />} />
+                  </Routes>
+                </Suspense>
+              </DestinationProvider>
+            </PlaceProvider>
+          </NewTripProvider>
+        </AuthProvider>
       </BrowserRouter>
     </>
   );

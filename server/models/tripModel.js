@@ -41,6 +41,7 @@ const destinationSchema = new mongoose.Schema({
 });
 
 const tripSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   name: {
     type: String,
     required: [true, "A trip must have a name"],
