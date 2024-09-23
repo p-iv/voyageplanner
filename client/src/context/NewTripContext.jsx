@@ -93,9 +93,15 @@ function NewTripProvider({ children }) {
 
   useEffect(() => {
     const fetchTrips = async () => {
+      const token = localStorage.getItem("token");
       try {
         const res = await fetch(
-          "https://voyageplanner-server.vercel.app/api/trips"
+          "https://voyageplanner-server.vercel.app/api/trips",
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
         );
         const data = await res.json();
         dispatch({ type: "set/trips", payload: data.data.trips });
@@ -108,6 +114,8 @@ function NewTripProvider({ children }) {
   }, []);
 
   const createTrip = async (trip) => {
+    const token = localStorage.getItem("token");
+
     try {
       const res = await fetch(
         "https://voyageplanner-server.vercel.app/api/trips",
@@ -115,6 +123,7 @@ function NewTripProvider({ children }) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(trip),
+          Authorization: token,
         }
       );
       const data = await res.json();
@@ -126,11 +135,14 @@ function NewTripProvider({ children }) {
   };
 
   const deleteTrip = async (id) => {
+    const token = localStorage.getItem("token");
+
     try {
       const res = await fetch(
         `https://voyageplanner-server.vercel.app/api/trips/${id}`,
         {
           method: "DELETE",
+          Authorization: token,
         }
       );
       if (res.ok) {
