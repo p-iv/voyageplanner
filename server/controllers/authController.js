@@ -17,9 +17,13 @@ exports.signup = async (req, res, next) => {
       confirmPassword: confirmPassword,
     });
 
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
+    const token = jwt.sign(
+      { id: newUser._id },
+      "housedogtreecatoneserversecretfootball",
+      {
+        expiresIn: "90d",
+      }
+    );
 
     res.status(200).json({
       status: "success",
@@ -46,9 +50,13 @@ exports.login = async (req, res) => {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
+  const token = jwt.sign(
+    { id: user._id },
+    "housedogtreecatoneserversecretfootball",
+    {
+      expiresIn: "90d",
+    }
+  );
 
   res.json({ token });
 };

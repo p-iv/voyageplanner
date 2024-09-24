@@ -12,6 +12,7 @@ const app = express();
 dotenv.config({ path: "./config.env" });
 
 app.use(cors());
+app.options("*", cors());
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
@@ -21,7 +22,9 @@ app.use("/api/trips", tripRouter);
 app.use("/api/users", userRouter);
 
 mongoose
-  .connect(process.env.DATABASE)
+  .connect(
+    "mongodb+srv://pavloiv00:aEaQTfxS76xN7eum@voyageplannercluster.ioau7.mongodb.net/voyageplanner?retryWrites=true&w=majority&appName=voyageplannerCluster"
+  )
   .then(() => console.log("DB connection successful"));
 
 const port = 3001;

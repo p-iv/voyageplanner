@@ -1,5 +1,6 @@
 const axios = require("axios");
 
+// const API_KEY = process.env.API_KEY;
 const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 exports.getAllDestinations = async (req, res) => {
   const input = req.query.input;
