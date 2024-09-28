@@ -11,13 +11,13 @@ import DestinationList from "./components/DestinationList";
 import Destination from "./components/Destination";
 import Attractions from "./components/Attractions";
 import Attraction from "./components/Attraction";
-import SignUp from "./pages/SignUp";
 import { AuthProvider } from "./context/AuthContext";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Product = lazy(() => import("./pages/Product"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Login = lazy(() => import("./pages/Login"));
+const SignUp = lazy(() => import("./pages/SignUp"));
 const AppLayout = lazy(() => import("./pages/AppLayout"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
