@@ -9,11 +9,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
-<<<<<<< HEAD
   const { signUp } = useAuth();
-=======
-  const { signup } = useAuth();
->>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9
 
   const newUser = {
     name: name,
@@ -25,11 +21,7 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmedPassword) {
-<<<<<<< HEAD
       signUp(newUser);
-=======
-      signup(newUser);
->>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9
     } else {
       alert("Passwords do not match");
     }

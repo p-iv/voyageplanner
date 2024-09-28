@@ -1,13 +1,13 @@
 const express = require("express");
 const tripController = require("./../controllers/tripController");
+const authCheck = require("../middleware/authCheck");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
 
 router
   .route("/")
-  .get(authMiddleware, tripController.getAllTrips)
-  .post(authMiddleware, tripController.createTrip);
+  .get(authCheck, tripController.getAllTrips)
+  .post(authCheck, tripController.createTrip);
 
-router.route("/:id").delete(authMiddleware, tripController.deleteTrip);
+router.route("/:id").delete(authCheck, tripController.deleteTrip);
 
 module.exports = router;

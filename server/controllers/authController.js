@@ -1,6 +1,12 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const AppError = require("../utils/appError");
+
+const signToken = (id) => {
+  return jwt.sign({ id: id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+};
 
 exports.signup = async (req, res, next) => {
   const { name, email, password, confirmPassword } = req.body;
@@ -17,21 +23,9 @@ exports.signup = async (req, res, next) => {
       confirmPassword: confirmPassword,
     });
 
-<<<<<<< HEAD
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
-    });
-=======
-    const token = jwt.sign(
-      { id: newUser._id },
-      "housedogtreecatoneserversecretfootball",
-      {
-        expiresIn: "90d",
-      }
-    );
->>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9
+    const token = signToken(newUser._id);
 
-    res.status(200).json({
+    res.status(201).json({
       status: "success",
       token,
       message: "User registered successfully",
@@ -46,26 +40,26 @@ exports.signup = async (req, res, next) => {
     });
   }
 };
-<<<<<<< HEAD
-=======
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
-  if (!user) return res.status(400).json({ message: "Invalid credentials" });
+  if (!email || !password) {
+    return next(new AppError("Please enter a valid email and password", 400));
+  }
+  try {
+    const user = await User.findOne({ email: email }).select("+password");
+    const correct = await user.correctPassword(password, user.password);
 
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
-
-  const token = jwt.sign(
-    { id: user._id },
-    "housedogtreecatoneserversecretfootball",
-    {
-      expiresIn: "90d",
+    if (!user || !correct) {
+      return next(new AppError("Invalid email or password", 401));
     }
-  );
 
-  res.json({ token });
+    const token = signToken(user._id);
+
+    res.status(200).json({
+      status: "success",
+      token,
+    });
+  } catch (err) {}
 };
->>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9

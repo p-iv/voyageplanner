@@ -34,11 +34,11 @@ function reducer(state, action) {
 
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-<<<<<<< HEAD
+  const navigate = useNavigate();
 
   const signUp = async (user) => {
     try {
-      const res = await fetch("127.0.0.1:3001/api/users/signup", {
+      const res = await fetch("http://localhost:3001/api/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,75 +46,41 @@ function AuthProvider({ children }) {
         body: JSON.stringify(user),
       });
       const data = res.json();
-      console.log(data.result);
+
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
+        navigate("/app");
+      }
     } catch (err) {
       console.error(err);
       dispatch({ type: "rejected", payload: "Failed to signup" });
-=======
-  const navigate = useNavigate();
-
-  const signup = async (user) => {
-    try {
-      const res = await fetch(
-        "https://voyageplanner-server.vercel.app/api/users/signup",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
-        }
-      );
-
-      const data = await res.json();
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        dispatch({ type: "set/user", payload: { token: data.token } });
-        navigate("/app");
-      } else {
-        alert(data.message || "Registration failed");
-      }
-    } catch (err) {
-      dispatch({ type: "error", payload: err.message });
     }
   };
 
   const login = async (user) => {
-    dispatch({ type: "set/loading", payload: true });
     try {
-      const response = await fetch(
-        "https://voyageplanner-server.vercel.app/api/users/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(user),
-        }
-      );
+      const res = await fetch("http://localhost:3001/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      if (res.ok) {
+        const data = await res.json();
 
-      const data = await response.json();
-      if (data.token) {
         localStorage.setItem("token", data.token);
-        dispatch({ type: "set/user", payload: { token: data.token } });
         navigate("/app");
-      } else {
-        alert(data.message || "Login failed");
       }
-    } catch (error) {
-      console.error("Login error", error);
-    } finally {
-      dispatch({ type: "set/loading", payload: false });
->>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9
+    } catch (err) {
+      throw new Error("Login failed");
     }
   };
 
   return (
-<<<<<<< HEAD
-    <AuthContext.Provider value={{ signUp }}>{children}</AuthContext.Provider>
-=======
-    <AuthContext.Provider value={{ signup, login }}>
+    <AuthContext.Provider value={{ signUp, login }}>
       {children}
     </AuthContext.Provider>
->>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9
   );
 }
 
