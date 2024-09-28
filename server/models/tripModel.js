@@ -46,6 +46,7 @@ const tripSchema = new mongoose.Schema({
     type: String,
     required: [true, "A trip must have a name"],
     uppercase: true,
+    unique: false,
   },
   destinations: {
     type: [destinationSchema],

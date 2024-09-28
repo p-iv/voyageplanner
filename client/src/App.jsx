@@ -12,6 +12,7 @@ import Destination from "./components/Destination";
 import Attractions from "./components/Attractions";
 import Attraction from "./components/Attraction";
 import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Product = lazy(() => import("./pages/Product"));
@@ -37,7 +38,14 @@ function App() {
                     <Route path="/product" element={<Product />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignUp />} />
-                    <Route path="/app" element={<AppLayout />}>
+                    <Route
+                      path="/app"
+                      element={
+                        <ProtectedRoute>
+                          <AppLayout />
+                        </ProtectedRoute>
+                      }
+                    >
                       <Route path="destination" element={<DestinationList />} />
                       <Route
                         path="destination/:destinationId"

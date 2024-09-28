@@ -9,6 +9,8 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const { Header, Sider } = Layout;
 
@@ -37,25 +39,22 @@ function PageNav() {
 }
 
 function Menulist() {
+  const { logout } = useAuth();
+
   return (
     <Menu mode="inline" className={styles.menu}>
       <Menu.Item key="home" icon={<HomeOutlined />}>
-        Home
+        <Link to="/">Home</Link>
       </Menu.Item>
-      <Menu.SubMenu
-        key="destinations"
-        icon={<GlobalOutlined />}
-        title="Destinations"
-      >
-        <Menu.Item key="popular-destinations">Popular Destinations</Menu.Item>
-        <Menu.Item key="nearby-destinations">Nearby Destinations</Menu.Item>
-      </Menu.SubMenu>
+
       <Menu.Item key="my-trips" icon={<HistoryOutlined />}>
         My Trips
       </Menu.Item>
       <Menu.Item key="settings" icon={<SettingOutlined />}>
         Settings
       </Menu.Item>
+
+      <button onClick={() => logout()}>Log out</button>
     </Menu>
   );
 }

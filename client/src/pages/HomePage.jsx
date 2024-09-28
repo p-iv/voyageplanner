@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import AppNav from "../components/AppNav";
 import styles from "./HomePage.module.scss";
+import { useAuth } from "../context/AuthContext";
 
 function HomePage() {
+  const user = localStorage.getItem("user");
   return (
     <main className={styles.homepage}>
       <AppNav />
@@ -15,7 +17,7 @@ function HomePage() {
           itineraries, and manage your travel schedule all in one place.
         </h2>
 
-        <Link to="/login" className="cta">
+        <Link to={user ? "/app" : "/login"} className="cta">
           Plan Your Trip Now
         </Link>
       </section>

@@ -33,7 +33,7 @@ function reducer(state, action) {
 }
 
 function AuthProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [{ isLoading }, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
   const signUp = async (user) => {
@@ -49,6 +49,7 @@ function AuthProvider({ children }) {
 
       if (res.ok) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("user", true);
         navigate("/app");
       }
     } catch (err) {
@@ -58,6 +59,7 @@ function AuthProvider({ children }) {
   };
 
   const login = async (user) => {
+    dispatch({ type: "set/loading", payload: true });
     try {
       const res = await fetch("http://localhost:3001/api/users/login", {
         method: "POST",
@@ -69,7 +71,10 @@ function AuthProvider({ children }) {
       if (res.ok) {
         const data = await res.json();
 
+        dispatch({ type: "set/loading", payload: false });
         localStorage.setItem("token", data.token);
+        localStorage.setItem("user", true);
+
         navigate("/app");
       }
     } catch (err) {
@@ -77,8 +82,17 @@ function AuthProvider({ children }) {
     }
   };
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    dispatch({ type: "set/loading", payload: false });
+    dispatch({ type: "set/error", payload: "" });
+    navigate("/");
+  };
+
   return (
-    <AuthContext.Provider value={{ signUp, login }}>
+    <AuthContext.Provider value={{ signUp, login, logout, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

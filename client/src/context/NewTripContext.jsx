@@ -130,9 +130,13 @@ function NewTripProvider({ children }) {
   };
 
   const deleteTrip = async (id) => {
+    const token = localStorage.getItem("token");
     try {
       const res = await fetch(`http://localhost:3001/api/trips/${id}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (res.ok) {
         dispatch({ type: "delete/trip", payload: id });
