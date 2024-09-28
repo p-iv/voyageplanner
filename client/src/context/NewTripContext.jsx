@@ -96,14 +96,11 @@ function NewTripProvider({ children }) {
       const token = localStorage.getItem("token");
 
       try {
-        const res = await fetch(
-          "https://voyageplanner-server.vercel.app/api/trips",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const res = await fetch("http://localhost:3001/api/trips", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const data = await res.json();
         dispatch({ type: "set/trips", payload: data.data.trips });
       } catch (err) {
@@ -115,19 +112,15 @@ function NewTripProvider({ children }) {
 
   const createTrip = async (trip) => {
     const token = localStorage.getItem("token");
-    console.log(token);
     try {
-      const res = await fetch(
-        "https://voyageplanner-server.vercel.app/api/trips",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(trip),
-        }
-      );
+      const res = await fetch("http://localhost:3001/api/trips", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(trip),
+      });
       const data = await res.json();
       dispatch({ type: "set/trips", payload: [...trips, data.data.trip] });
     } catch (err) {
@@ -138,12 +131,9 @@ function NewTripProvider({ children }) {
 
   const deleteTrip = async (id) => {
     try {
-      const res = await fetch(
-        `https://voyageplanner-server.vercel.app/api/trips/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const res = await fetch(`http://localhost:3001/api/trips/${id}`, {
+        method: "DELETE",
+      });
       if (res.ok) {
         dispatch({ type: "delete/trip", payload: id });
       }
