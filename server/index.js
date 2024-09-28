@@ -12,6 +12,7 @@ const app = express();
 dotenv.config({ path: "./config.env" });
 
 app.use(cors());
+app.options("*", cors());
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));

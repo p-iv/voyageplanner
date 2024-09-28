@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
   const user = {
     email: email,
@@ -16,6 +17,10 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+<<<<<<< HEAD
+=======
+    login(user);
+>>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9
     setEmail("");
     setPassword("");
   };

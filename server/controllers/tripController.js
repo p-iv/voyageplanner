@@ -2,7 +2,7 @@ const Trip = require("./../models/tripModel");
 
 exports.getAllTrips = async (req, res) => {
   try {
-    const trips = await Trip.find();
+    const trips = await Trip.find({ userId: req.user.id });
 
     res.status(200).json({
       status: "success",
@@ -20,8 +20,13 @@ exports.getAllTrips = async (req, res) => {
 };
 
 exports.createTrip = async (req, res) => {
+  const { destinations, name } = req.body;
   try {
-    const newTrip = await Trip.create(req.body);
+    const newTrip = await Trip.create({
+      userId: req.user.id,
+      destinations,
+      name,
+    });
 
     res.status(201).json({
       status: "success",
@@ -40,7 +45,10 @@ exports.createTrip = async (req, res) => {
 
 exports.deleteTrip = async (req, res) => {
   try {
-    const trip = await Trip.findByIdAndDelete(req.params.id);
+    const trip = await Trip.findByIdAndDelete({
+      _id: req.params.id,
+      userId: req.user.id,
+    });
     res.status(200).json({
       status: "success",
       message: "Trip deleted successfully",

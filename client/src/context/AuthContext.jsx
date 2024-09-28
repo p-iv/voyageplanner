@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -33,6 +34,7 @@ function reducer(state, action) {
 
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+<<<<<<< HEAD
 
   const signUp = async (user) => {
     try {
@@ -48,11 +50,71 @@ function AuthProvider({ children }) {
     } catch (err) {
       console.error(err);
       dispatch({ type: "rejected", payload: "Failed to signup" });
+=======
+  const navigate = useNavigate();
+
+  const signup = async (user) => {
+    try {
+      const res = await fetch(
+        "https://voyageplanner-server.vercel.app/api/users/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
+
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        dispatch({ type: "set/user", payload: { token: data.token } });
+        navigate("/app");
+      } else {
+        alert(data.message || "Registration failed");
+      }
+    } catch (err) {
+      dispatch({ type: "error", payload: err.message });
+    }
+  };
+
+  const login = async (user) => {
+    dispatch({ type: "set/loading", payload: true });
+    try {
+      const response = await fetch(
+        "https://voyageplanner-server.vercel.app/api/users/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        }
+      );
+
+      const data = await response.json();
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        dispatch({ type: "set/user", payload: { token: data.token } });
+        navigate("/app");
+      } else {
+        alert(data.message || "Login failed");
+      }
+    } catch (error) {
+      console.error("Login error", error);
+    } finally {
+      dispatch({ type: "set/loading", payload: false });
+>>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9
     }
   };
 
   return (
+<<<<<<< HEAD
     <AuthContext.Provider value={{ signUp }}>{children}</AuthContext.Provider>
+=======
+    <AuthContext.Provider value={{ signup, login }}>
+      {children}
+    </AuthContext.Provider>
+>>>>>>> d642b13c1109b281b0e799c627e62ba7e12996c9
   );
 }
 
