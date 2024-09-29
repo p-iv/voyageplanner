@@ -27,8 +27,8 @@ function App() {
     <>
       <BrowserRouter>
         <SpeedInsights />
-        <AuthProvider>
-          <NewTripProvider>
+        <NewTripProvider>
+          <AuthProvider>
             <PlaceProvider>
               <DestinationProvider>
                 <Suspense fallback={<SpinnerFullPage />}>
@@ -62,8 +62,8 @@ function App() {
                 </Suspense>
               </DestinationProvider>
             </PlaceProvider>
-          </NewTripProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </NewTripProvider>
       </BrowserRouter>
     </>
   );

@@ -91,22 +91,22 @@ function NewTripProvider({ children }) {
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    const fetchTrips = async () => {
-      const token = localStorage.getItem("token");
+  const fetchTrips = async () => {
+    const token = localStorage.getItem("token");
 
-      try {
-        const res = await fetch("http://localhost:3001/api/trips", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await res.json();
-        dispatch({ type: "set/trips", payload: data.data.trips });
-      } catch (err) {
-        dispatch({ type: "rejected", payload: "Failed to fetch trips" });
-      }
-    };
+    try {
+      const res = await fetch("http://localhost:3001/api/trips", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await res.json();
+      dispatch({ type: "set/trips", payload: data.data.trips });
+    } catch (err) {
+      dispatch({ type: "rejected", payload: "Failed to fetch trips" });
+    }
+  };
+  useEffect(() => {
     fetchTrips();
   }, []);
 
@@ -158,6 +158,7 @@ function NewTripProvider({ children }) {
         selectedTrip,
         createTrip,
         deleteTrip,
+        fetchTrips,
         trips,
       }}
     >

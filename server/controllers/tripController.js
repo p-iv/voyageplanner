@@ -24,8 +24,8 @@ exports.createTrip = async (req, res) => {
   try {
     const newTrip = await Trip.create({
       userId: req.user,
-      destinations,
       name,
+      destinations,
     });
 
     res.status(201).json({

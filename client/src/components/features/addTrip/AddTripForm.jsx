@@ -14,7 +14,6 @@ function AddTripForm({ setActiveForm, activeForm }) {
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
     setTripName(e.target.value);
   };
 

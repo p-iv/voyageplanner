@@ -8,11 +8,12 @@ import {
   SettingOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const { Header, Sider } = Layout;
+const { Sider } = Layout;
 
 function PageNav() {
   const [collapsed, setCollapsed] = useState(true);
@@ -41,22 +42,31 @@ function PageNav() {
 function Menulist() {
   const { logout } = useAuth();
 
-  return (
-    <Menu mode="inline" className={styles.menu}>
-      <Menu.Item key="home" icon={<HomeOutlined />}>
-        <Link to="/">Home</Link>
-      </Menu.Item>
+  const items = [
+    {
+      key: "home",
+      icon: <HomeOutlined />,
+      label: <Link to="/">Home</Link>,
+    },
+    {
+      key: "my-trips",
+      icon: <HistoryOutlined />,
+      label: "My Trips",
+    },
+    {
+      key: "settings",
+      icon: <SettingOutlined />,
+      label: "Settings",
+    },
+    {
+      key: "logout",
+      icon: <LogoutOutlined />,
+      label: "Logout",
+      onClick: logout,
+    },
+  ];
 
-      <Menu.Item key="my-trips" icon={<HistoryOutlined />}>
-        My Trips
-      </Menu.Item>
-      <Menu.Item key="settings" icon={<SettingOutlined />}>
-        Settings
-      </Menu.Item>
-
-      <button onClick={() => logout()}>Log out</button>
-    </Menu>
-  );
+  return <Menu mode="inline" className={styles.menu} items={items} />;
 }
 
 function Logo() {
