@@ -1,8 +1,7 @@
 
 [![My Skills](https://skillicons.dev/icons?i=mongodb,expressjs,react,nodejs&theme=dark)](https://skillicons.dev)
 
-
-
+Trip planner application with mern stack based on googlemaps API
 
 Technologies used:
 
