@@ -39,6 +39,35 @@ Documentation:
 
    Then you will see a list of attractions and filter  button for filtering attraction type
 
-   ![Screenshot 2024-09-30 212156](https://github.com/user-attachments/assets/835cf44d-3a24-43dd-a968-396729f23fb6)
+   ![Screenshot 2024-09-30 212203](https://github.com/user-attachments/assets/a6bbe612-098f-47ab-904f-e4fafa5b1a2a)
+
+   To view more information about attraction and to add it, click a attraction card
+   Then, you will see attraction info with carosel of images and two buttons "back" (1) and "add attraction" (2)
+   if you want to backk to list of attractions click "back" button, if you want to add attraction click "add attraction" button
+
+   ![Screenshot 2024-09-30 212312](https://github.com/user-attachments/assets/44d23618-2aed-48e5-969b-0c7212c9c5de)
+
+   After yoou clicked "add attraction" button, you will see that "confirm destionation" button appeared in the trip form, it's mean that you can add destination with attractions to trip
+
+   ![Screenshot 2024-09-30 212321](https://github.com/user-attachments/assets/ca9b0424-4095-4e5c-8f66-f9836df03197)
+
+   Then, you will see added destionation in trip form
+
+   ![Screenshot 2024-09-30 212419](https://github.com/user-attachments/assets/67405541-ace7-46b3-9307-daace20a27d1)
+
+   Now you can add trip by clicking "add trip" button
+   Then you will see your added trip with "show detinations" (1) button and "delete trip" (2) button
+
+   ![Screenshot 2024-09-30 213141](https://github.com/user-attachments/assets/4d28e8a7-8953-48bf-acd2-811683598a9a)
+
+   To logout click "logout" button
+
+   ![Screenshot 2024-09-30 213211](https://github.com/user-attachments/assets/6e0995c7-eda3-41d1-8f26-370bfdf3ead8)
+
+
+   
+
+
+
 
    
