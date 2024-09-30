@@ -4,7 +4,7 @@ import Image from "./UI/Image";
 import styles from "./ImageCarousel.module.scss";
 
 // const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
-const API_KEY = process.GOOGLEMAPS_API_KEY;
+const API_KEY = process.env.GOOGLEMAPS_API_KEY;
 
 const ImageCarousel = memo(function ImageCarousel({
   photos,
