@@ -38,13 +38,16 @@ function AuthProvider({ children }) {
 
   const signUp = async (user) => {
     try {
-      const res = await fetch("http://localhost:3001/api/users/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+      const res = await fetch(
+        "https://voyageplanner-server.vercel.app/api/users/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
       const data = res.json();
 
       if (res.ok) {
@@ -68,13 +71,16 @@ function AuthProvider({ children }) {
       return;
     }
     try {
-      const res = await fetch("http://localhost:3001/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+      const res = await fetch(
+        "https://voyageplanner-server.vercel.app/api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
       if (res.ok) {
         const data = await res.json();
 
