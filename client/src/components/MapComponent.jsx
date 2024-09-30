@@ -17,13 +17,8 @@ function MapComponent() {
   const { attractionId } = useParams();
   const { lat, lng } = useDestination();
   const { places } = usePlace();
-  const {
-    activeDestinationForm,
-    destinations,
-    selectedTrip,
-    activeTripDestinations,
-    trips,
-  } = useTrip();
+  const { activeDestinationForm, destinations, selectedTrip, trips } =
+    useTrip();
 
   const trip = trips.find((trip) => trip._id === selectedTrip);
 
@@ -75,8 +70,8 @@ function MapComponent() {
                 )}
               </AdvancedMarker>
             ))}
-          {destinations.map((destination) =>
-            destination.attractions.map((attraction) => (
+          {destinations?.map((destination) =>
+            destination.attractions?.map((attraction) => (
               <AdvancedMarker
                 key={attraction.place_id}
                 position={attraction.geometry.location}
@@ -88,7 +83,7 @@ function MapComponent() {
           {selectedTrip && (
             <>
               {trip.destinations?.map((trip) =>
-                trip.attractions.map((attraction) => (
+                trip.attractions?.map((attraction) => (
                   <AdvancedMarker
                     key={attraction.place_id}
                     position={attraction.geometry.location}
