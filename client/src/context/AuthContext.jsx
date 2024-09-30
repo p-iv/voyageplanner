@@ -48,15 +48,9 @@ function AuthProvider({ children }) {
           body: JSON.stringify(user),
         }
       );
-      const data = res.json();
 
       if (res.ok) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", true);
-
-        fetchTrips();
-
-        navigate("/app");
+        navigate("/login");
       }
     } catch (err) {
       console.error(err);
