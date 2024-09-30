@@ -38,14 +38,14 @@ function Attraction() {
     [attractionId]
   );
 
-  function handleAddAttraction() {
+  const handleAddAttraction = () => {
     if (!existingId) {
       dispatch({
         type: "set/attractions",
         payload: [...attractions, currentPlace],
       });
     }
-  }
+  };
   return (
     <>
       {isLoading ? (

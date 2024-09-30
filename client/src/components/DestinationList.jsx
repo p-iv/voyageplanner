@@ -8,10 +8,10 @@ function DestinationList() {
 
   const [query, setQuery] = useState("");
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     setQuery(e.target.value);
     dispatch({ type: "query/entered", payload: e.target.value });
-  }
+  };
 
   return (
     <div className={styles.destinationList}>

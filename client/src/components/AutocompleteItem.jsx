@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 function AutocompleteItem({ value, setQuery, dispatch }) {
   const { description, place_id } = value;
 
-  function handleClick() {
+  const handleClick = () => {
     setQuery(() => "");
     dispatch({ type: "query/entered", payload: "" });
-  }
+  };
+
   return (
     <li>
       <Link
-        className={styles.autocomleteitem}
+        className={styles.autoCompleteItem}
         onClick={handleClick}
         to={`${place_id}`}
       >

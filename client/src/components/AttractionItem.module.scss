@@ -15,30 +15,21 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-}
-.name img {
-  max-height: 3rem;
-}
-.name h2 {
-  font-size: 1.5rem;
+  img {
+    max-height: 3rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
 }
 .rating {
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-.rating p {
-  font-size: 1rem;
+  p {
+    font-size: 1rem;
+  }
 }
 .attractionItemInfo {
   padding: 1rem;
-}
-
-@media only screen and (min-width: 1280px) and (max-width: 1440) {
-}
-@media only screen and (min-width: 1024px) and (max-width: 1280) {
-}
-@media only screen and (min-width: 768px) and (max-width: 1024) {
-}
-@media only screen and (min-width: 640px) and (max-width: 768) {
 }

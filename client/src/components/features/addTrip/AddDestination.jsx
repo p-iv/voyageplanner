@@ -3,7 +3,6 @@ import { useTrip } from "../../../context/NewTripContext";
 import styles from "./AddDestination.module.scss";
 
 import { Link } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import AddedDestination from "./AddedDestination";
 
 function AddDestination() {
@@ -11,12 +10,11 @@ function AddDestination() {
   const { destination, attractions, destinations, dispatch } = useTrip();
 
   const tripDestination = {
-    id: uuidv4(),
     name: destination,
     attractions: attractions,
   };
 
-  function handleConfirmDestination() {
+  const handleConfirmDestination = () => {
     setActiveDestination(!activeAddDestination);
 
     dispatch({
@@ -32,16 +30,16 @@ function AddDestination() {
       type: "set/activeDestinationForm",
       payload: false,
     });
-  }
+  };
 
-  function handleActiveDestination() {
+  const handleActiveDestination = () => {
     setActiveDestination(!activeAddDestination);
 
     dispatch({
       type: "set/activeDestinationForm",
       payload: true,
     });
-  }
+  };
 
   return (
     <>

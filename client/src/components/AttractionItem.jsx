@@ -6,7 +6,8 @@ import StarRating from "./UI/StarRating";
 import { usePlace } from "../context/PlaceContext";
 import Spinner from "./UI/Spinner";
 
-const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+// const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+const API_KEY = process.env.GOOGLEMAPS_API_KEY;
 
 function AttractionItem({ place }) {
   const { isLoading } = usePlace();
