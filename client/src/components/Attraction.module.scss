@@ -35,11 +35,13 @@
 .website,
 .address {
   display: flex;
+  width: 100%;
   gap: 1rem;
   font-size: 1.5rem;
 }
 .info {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 1rem;
 }
