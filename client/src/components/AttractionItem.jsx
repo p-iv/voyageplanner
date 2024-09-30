@@ -7,7 +7,7 @@ import { usePlace } from "../context/PlaceContext";
 import Spinner from "./UI/Spinner";
 
 // const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
-const API_KEY = process.env.GOOGLEMAPS_API_KEY;
+const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
 
 function AttractionItem({ place }) {
   const { isLoading } = usePlace();

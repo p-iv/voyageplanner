@@ -3,8 +3,8 @@ import styles from "./AddedDestination.module.scss";
 
 import Image from "../../UI/Image";
 
-// const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
-const API_KEY = process.env.GOOGLEMAPS_API_KEY;
+const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+
 function AddedDestination({ destination }) {
   const { dispatch } = useTrip();
 
