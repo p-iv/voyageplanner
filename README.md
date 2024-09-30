@@ -2,6 +2,22 @@
 [![My Skills](https://skillicons.dev/icons?i=mongodb,expressjs,react,nodejs&theme=dark)](https://skillicons.dev)
 
 
+
+
+Technologies used:
+
+front-end: react
+   - for routing was used react-router
+   - for state management was used context api with useReduser hook
+   - for styling, styled components with sass
+     
+back-end: express
+   - for mongodb interaction was used mongoose
+   - for athorization was used JWT
+     
+database: mongodb
+
+
 Documentation:
 
 1. Logging in and signing up
@@ -18,8 +34,7 @@ Documentation:
 
    ![Screenshot 2024-09-30 212114](https://github.com/user-attachments/assets/047d3028-15e3-4bcf-b37e-778bf79a3b7d)
 
-   Then you will see a trip form with input for trip name (1), "add destination" button (2) and "add trip" button (3)
-   To get to next step of planning trip you need to add atleast one destination by clicking a "add destination" button (2)
+   Then you will see a trip form with input for trip name (1), "add destination" button (2) and "add trip" button (3), to get to next step of planning trip you need to add atleast one destination by clicking a "add destination" button (2)
 
     ![Screenshot 2024-09-30 212120](https://github.com/user-attachments/assets/ebf85fa6-906a-474f-bb56-fae5cfdf0d3e)
 
@@ -43,11 +58,11 @@ Documentation:
 
    To view more information about attraction and to add it, click a attraction card
    Then, you will see attraction info with carosel of images and two buttons "back" (1) and "add attraction" (2)
-   if you want to backk to list of attractions click "back" button, if you want to add attraction click "add attraction" button
+   if you want to back to list of attractions click "back" button, if you want to add attraction click "add attraction" button
 
    ![Screenshot 2024-09-30 212312](https://github.com/user-attachments/assets/44d23618-2aed-48e5-969b-0c7212c9c5de)
 
-   After yoou clicked "add attraction" button, you will see that "confirm destionation" button appeared in the trip form, it's mean that you can add destination with attractions to trip
+   After you clicked "add attraction" button, you will see that "confirm destionation" button appeared in the trip form, it's mean that you can add destination with attractions to trip
 
    ![Screenshot 2024-09-30 212321](https://github.com/user-attachments/assets/ca9b0424-4095-4e5c-8f66-f9836df03197)
 
