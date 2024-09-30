@@ -11,7 +11,7 @@ front-end: react
    - for state management was used context api with useReduser hook
    - for styling, styled components with sass
      
-back-end: express
+back-end: node js with express
    - for mongodb interaction was used mongoose
    - for athorization was used JWT
      
