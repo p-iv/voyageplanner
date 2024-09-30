@@ -38,7 +38,7 @@ function MapComponent() {
   );
 
   return (
-    <APIProvider apiKey={process.env.GOOGLEMAPS_API_KEY}>
+    <APIProvider apiKey="AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI">
       <div
         className={
           activeDestinationForm
