@@ -1,16 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 
 const googleMapsApiRouter = require("./routes/googleMapsApiRoutes");
 const tripRouter = require("./routes/tripRoutes");
 const userRouter = require("./routes/userRoutes");
 
 const app = express();
-
-dotenv.config({ path: "./config.env" });
-
 app.use(cors());
 app.use(express.json());
 

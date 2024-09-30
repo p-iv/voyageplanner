@@ -2,7 +2,6 @@ import styles from "./PlannerNav.module.scss";
 import AddTrip from "./features/addTrip/AddTrip";
 
 import TripList from "./TripList";
-// import { useTrip } from "../context/NewTripContext";
 
 function PlannerNav() {
   return (

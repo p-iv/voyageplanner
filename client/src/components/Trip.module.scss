@@ -7,19 +7,19 @@
   width: 95%;
   transition: transform 0.2s ease-in-out;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.tripItem:hover {
-  transform: scale(1.02);
+  p {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 .trip {
   height: 10rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.tripItem p {
-  font-size: 1.7rem;
-  font-weight: 600;
 }
 .buttons {
   display: flex;
@@ -34,33 +34,24 @@
 .viewDestinationsButton {
   border: 1px solid var(--brand-color);
   color: var(--brand-color);
+  &:hover {
+    background-color: var(--brand-color);
+    color: var(--color-light-1);
+    cursor: pointer;
+  }
 }
 .deleteDestinationButton {
   border: 1px solid #d12525;
   color: #d12525;
-}
-.viewDestinationsButton:hover {
-  background-color: var(--brand-color);
-  color: var(--color-light-1);
-  cursor: pointer;
-}
-.deleteDestinationButton:hover {
-  background-color: #d12525;
-  color: var(--color-light-1);
+  &:hover {
+    background-color: #d12525;
+    color: var(--color-light-1);
 
-  cursor: pointer;
+    cursor: pointer;
+  }
 }
 .destinations {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-@media only screen and (min-width: 1280px) and (max-width: 1440) {
-}
-@media only screen and (min-width: 1024px) and (max-width: 1280) {
-}
-@media only screen and (min-width: 768px) and (max-width: 1024) {
-}
-@media only screen and (min-width: 640px) and (max-width: 768) {
 }
