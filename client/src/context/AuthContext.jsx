@@ -92,7 +92,7 @@ function AuthProvider({ children }) {
 
         navigate("/app");
       } else {
-        dispatch({ type: "rejected", payload: "Invalid email or password" });
+        alert("Invalid email or password");
         dispatch({ type: "set/loading", payload: false });
 
         return;
