@@ -1,4 +1,4 @@
-VoyagePlanner it's fullstack application based on googlemaps API
+VoyagePlanner this is a fullstack application based on googlemaps API
 
 Technologies used:
 
