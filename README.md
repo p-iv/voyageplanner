@@ -16,7 +16,7 @@ database: mongodb
 
 Documentation:
 
-1. Logging in and signing up
+1. Logging in and signing up:<br>
    to get to login page, click "plan your trip now' button (1) or click "login" button (2)
    
    ![Screenshot 2024-09-30 211759](https://github.com/user-attachments/assets/f5325ed0-2dec-4749-93b1-d487439c0c58)
@@ -25,7 +25,7 @@ Documentation:
 
    ![Screenshot 2024-09-30 211824](https://github.com/user-attachments/assets/434b5a34-f3c9-43ab-84f0-c327570e0056)
 
-2. Planning trips
+2. Planning trips:<br>
    after you succesfully logged in, you will see app layout, to start planning trip, click "add trip" button
 
    ![Screenshot 2024-09-30 212114](https://github.com/user-attachments/assets/047d3028-15e3-4bcf-b37e-778bf79a3b7d)
