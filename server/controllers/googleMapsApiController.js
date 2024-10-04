@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const API_KEY = import.meta.env.VITE_GOOGLEMAPS_API_KEY;
+const API_KEY = process.env.GOOGLEMAPS_API_KEY;
 
 exports.getAllDestinations = async (req, res) => {
   const input = req.query.input;

@@ -7,7 +7,11 @@ const tripRouter = require("./routes/tripRoutes");
 const userRouter = require("./routes/userRoutes");
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
