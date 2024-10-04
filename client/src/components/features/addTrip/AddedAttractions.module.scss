@@ -1,0 +1,10 @@
+.addedAttractions {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-dark-2);
+  border-radius: 0 0 1.5rem 1.5rem;
+  list-style: none;
+}

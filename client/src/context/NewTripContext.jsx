@@ -49,7 +49,13 @@ function reducer(state, action) {
         ...state,
         trips: action.payload,
       };
-
+    case "delete/attraction":
+      return {
+        ...state,
+        attractions: state.attractions.filter(
+          (attraction) => attraction.place_id !== action.payload
+        ),
+      };
     case "delete/destination":
       return {
         ...state,
@@ -66,6 +72,12 @@ function reducer(state, action) {
       return {
         ...state,
         selectedTrip: action.payload,
+      };
+    case "clear/data":
+      return {
+        ...state,
+        destination: "",
+        attractions: [],
       };
     case "rejected":
       return {

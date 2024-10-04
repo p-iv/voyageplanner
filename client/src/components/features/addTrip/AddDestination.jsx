@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useTrip } from "../../../context/NewTripContext";
 import styles from "./AddDestination.module.scss";
-
+import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import AddedDestination from "./AddedDestination";
+import PossibleAddedDestination from "./PossibleAddedDestination";
 
 function AddDestination() {
   const [activeAddDestination, setActiveDestination] = useState(false);
   const { destination, attractions, destinations, dispatch } = useTrip();
 
   const tripDestination = {
+    id: uuidv4(),
     name: destination,
     attractions: attractions,
   };
@@ -62,14 +64,17 @@ function AddDestination() {
       ) : (
         <>
           {destination != "" && attractions.length != 0 ? (
-            <Link to="/app">
-              <button
-                onClick={handleConfirmDestination}
-                className={styles.confirmDestinationButton}
-              >
-                Confirm Destination
-              </button>
-            </Link>
+            <>
+              <PossibleAddedDestination deleteAttraction={true} />
+              <Link to="/app">
+                <button
+                  onClick={handleConfirmDestination}
+                  className={styles.confirmDestinationButton}
+                >
+                  Confirm Destination
+                </button>
+              </Link>
+            </>
           ) : null}
         </>
       )}

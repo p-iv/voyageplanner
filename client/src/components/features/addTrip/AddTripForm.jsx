@@ -3,10 +3,13 @@ import { useTrip } from "../../../context/NewTripContext";
 import styles from "./AddTripForm.module.scss";
 import Button from "./../../UI/Button";
 import AddDestination from "./AddDestination";
+import { useNavigate } from "react-router-dom";
 
 function AddTripForm({ setActiveForm, activeForm }) {
   const [tripName, setTripName] = useState("");
-  const { dispatch, destinations, createTrip } = useTrip();
+  const { dispatch, destinations, createTrip, activeDestinationForm } =
+    useTrip();
+  const navigate = useNavigate();
 
   const newTrip = {
     name: tripName.toUpperCase(),
@@ -32,8 +35,26 @@ function AddTripForm({ setActiveForm, activeForm }) {
     }
   };
 
+  const handleCloseForm = () => {
+    setActiveForm(false);
+    dispatch({ type: "clear/data" });
+    dispatch({
+      type: "set/activeDestinationForm",
+      payload: false,
+    });
+    navigate("/app");
+  };
+
   return (
     <div className={styles.tripForm}>
+      <Button
+        type="close"
+        className={styles.closeButton}
+        onClick={handleCloseForm}
+      >
+        x
+      </Button>
+
       <input
         value={tripName}
         type="text"

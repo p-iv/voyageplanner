@@ -1,9 +1,8 @@
 import { useTrip } from "../../../context/NewTripContext";
 import styles from "./AddedDestination.module.scss";
 
-import Image from "../../UI/Image";
-
-const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+import AddedAttractions from "./AddedAttractions";
+import Button from "../../UI/Button";
 
 function AddedDestination({ destination }) {
   const { dispatch } = useTrip();
@@ -16,21 +15,15 @@ function AddedDestination({ destination }) {
     <div>
       <div className={styles.addedDestination}>
         <p>{destination.name}</p>
-        <button onClick={handleDeleteDestination}>x</button>
+        <Button type="close" onClick={handleDeleteDestination}>
+          x
+        </Button>
       </div>
 
-      <ul className={styles.addedAttractions}>
-        {destination.attractions.map((attraction) => (
-          <li key={attraction.id}>
-            <Image
-              alt_text="attraction image"
-              type="addedAttractionImage"
-              source={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photos[0].photo_reference}&key=${API_KEY}`}
-            />
-            <p>{attraction.name}</p>
-          </li>
-        ))}
-      </ul>
+      <AddedAttractions
+        deleteAttraction={false}
+        attractions={destination.attractions}
+      />
     </div>
   );
 }

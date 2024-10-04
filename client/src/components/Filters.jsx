@@ -2,6 +2,7 @@ import { useState } from "react";
 import { usePlace } from "../context/PlaceContext";
 import { FilterOutlined } from "@ant-design/icons";
 import styles from "./Filters.module.scss";
+import Button from "../components/UI/Button";
 
 const filterOptions = [
   { label: "Tourist Attractions", value: "tourist_attraction" },
@@ -42,7 +43,9 @@ const Filters = () => {
               </span>
               <h3>Filter by:</h3>
             </div>
-            <button onClick={() => setShowFilters(false)}>X</button>
+            <Button type="primary" onClick={() => setShowFilters(false)}>
+              X
+            </Button>
           </div>
 
           {filterOptions.map((filter) => (
@@ -56,9 +59,9 @@ const Filters = () => {
               <span>{filter.label}</span>
             </label>
           ))}
-          <button onClick={handleApplyFilters} className={styles.applyButton}>
+          <Button onClick={handleApplyFilters} type="primary">
             Apply Filters
-          </button>
+          </Button>
         </div>
       ) : (
         <span

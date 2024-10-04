@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import styles from "./Destination.module.scss";
 import { useDestination } from "../context/DestinationContext";
@@ -9,6 +9,7 @@ import ImageCarousel from "./ImageCarousel";
 import Spinner from "./UI/Spinner";
 import { useTrip } from "../context/NewTripContext";
 import DestinationNav from "./DestinationNav";
+import Button from "./UI/Button";
 
 function Destination() {
   const { destinationId } = useParams();
@@ -48,6 +49,16 @@ function Destination() {
             alt_text="city image"
           />
           <h2>{currentDestination.formatted_address}</h2>
+          <Link to="/app/destination">
+            <Button
+              type="back"
+              onClick={() => {
+                dispatch({ type: "clear/data" });
+              }}
+            >
+              Back
+            </Button>
+          </Link>
         </div>
       )}
     </>

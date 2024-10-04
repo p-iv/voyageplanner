@@ -1,0 +1,12 @@
+.possibleAddedDestination {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-dark-0);
+  border-radius: 1.5rem;
+  text-align: center;
+
+  .destinationName {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}

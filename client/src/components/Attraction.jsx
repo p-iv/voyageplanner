@@ -101,12 +101,6 @@ function Attraction() {
             </ul>
           )}
 
-          <p className={styles.message}>
-            {attractions.length}{" "}
-            {attractions.length === 1 ? "Attraction" : "Attractions"} in Your
-            List
-          </p>
-
           <div className={styles.confirmAttraction}>
             <Link to="/app/attractions">
               <Button type="back">Back</Button>
