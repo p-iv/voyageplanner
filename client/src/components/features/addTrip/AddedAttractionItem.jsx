@@ -3,7 +3,7 @@ import { useTrip } from "../../../context/NewTripContext";
 import Button from "../../UI/Button";
 import Image from "../../UI/Image";
 
-const API_KEY = "AIzaSyAUgy97d-8V-p70KKlbyVR3MFQxUnqoGGI";
+const API_KEY = import.meta.env.VITE_GOOGLEMAPS_API_KEY;
 
 function AddedAttractionItem({ deleteAttraction, attraction }) {
   const { dispatch } = useTrip();

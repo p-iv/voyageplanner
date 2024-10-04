@@ -5,13 +5,11 @@ import StarRating from "./UI/StarRating";
 import { usePlace } from "../context/PlaceContext";
 import Spinner from "./UI/Spinner";
 
-const API_KEY = process.env.GOOGLEMAPS_API_KEY;
+const API_KEY = import.meta.env.VITE_GOOGLEMAPS_API_KEY;
 
 function AttractionItem({ place }) {
   const { isLoading } = usePlace();
   const { photos, name, place_id, rating } = place;
-
-  console.log("API_KEY:", API_KEY);
 
   return (
     <>
