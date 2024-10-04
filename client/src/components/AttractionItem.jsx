@@ -11,6 +11,8 @@ function AttractionItem({ place }) {
   const { isLoading } = usePlace();
   const { photos, name, place_id, rating } = place;
 
+  console.log("API_KEY:", API_KEY);
+
   return (
     <>
       {isLoading ? (
