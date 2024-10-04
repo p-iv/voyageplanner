@@ -5,7 +5,7 @@ Technologies used:
 front-end: react
    - for routing was used react-router
    - for state management was used context api with useReduser hook
-   - for styling, styled components with sass
+   - for styling, component-based styling with sass
      
 back-end: node js with express
    - for mongodb interaction was used mongoose
