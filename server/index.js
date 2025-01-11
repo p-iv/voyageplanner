@@ -8,7 +8,7 @@ const userRouter = require("./routes/userRoutes");
 
 const app = express();
 const corsOptions = {
-  origin: "https://voyage-planner.vercel.app",
+  origin: "https://voyageplanner.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
   credentials: true,
 };
