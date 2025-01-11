@@ -7,7 +7,13 @@ const tripRouter = require("./routes/tripRoutes");
 const userRouter = require("./routes/userRoutes");
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: "https://voyage-planner.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
