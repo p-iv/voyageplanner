@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon --dns-result-order=ipv4first index.js"
+    "start": "nodemon index.js"
   },
   "author": "p-iv",
   "license": "ISC",

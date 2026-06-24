@@ -3,13 +3,14 @@ import styles from "./SignUp.module.scss";
 import AppNav from "../components/AppNav";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Spinner from "../components/UI/Spinner.jsx";
 
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
-  const { signUp } = useAuth();
+  const { signUp, isLoading } = useAuth();
 
   const newUser = {
     name: name,
@@ -34,51 +35,56 @@ function SignUp() {
   return (
     <main className={styles.login}>
       <AppNav />
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
+      {isLoading ? (
+          <Spinner/>
+      ) :
+          (
+              <form className={styles.form} onSubmit={handleSubmit}>
+                <h1>Sign Up</h1>
 
-        <input
-          required
-          type="name"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+                <input
+                    required
+                    type="name"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
 
-        <input
-          required
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+                <input
+                    required
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-        <input
-          minLength="8"
-          required
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+                <input
+                    minLength="8"
+                    required
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
-        <input
-          minLength="8"
-          required
-          type="password"
-          placeholder="Confirm password"
-          value={confirmedPassword}
-          onChange={(e) => setConfirmedPassword(e.target.value)}
-        />
-        <button type="submit">Sign Up</button>
+                <input
+                    minLength="8"
+                    required
+                    type="password"
+                    placeholder="Confirm password"
+                    value={confirmedPassword}
+                    onChange={(e) => setConfirmedPassword(e.target.value)}
+                />
+                <button type="submit">Sign Up</button>
 
-        <p>
-          Do you have an account?{" "}
-          <Link to="/login">
-            <b>Log in</b>
-          </Link>
-        </p>
-      </form>
+                <p>
+                  Do you have an account?{" "}
+                  <Link to="/login">
+                    <b>Log in</b>
+                  </Link>
+                </p>
+              </form>
+          )}
     </main>
   );
 }

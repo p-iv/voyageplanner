@@ -38,6 +38,7 @@ function AuthProvider({ children }) {
   const BASE_SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
   const signUp = async (user) => {
+    dispatch({ type: "set/loading", payload: true })
     try {
       const res = await fetch(
         `${BASE_SERVER_URL}/api/users/signup`,
@@ -51,10 +52,12 @@ function AuthProvider({ children }) {
       );
 
       if (res.ok) {
+        dispatch({ type: "set/loading", payload: false })
         navigate("/login");
       }
     } catch (err) {
       console.error(err);
+      dispatch({ type: "set/loading", payload: false })
       dispatch({ type: "rejected", payload: "Failed to signup" });
     }
   };
@@ -93,6 +96,7 @@ function AuthProvider({ children }) {
         return;
       }
     } catch (err) {
+      dispatch({ type: "set/loading", payload: false })
       throw new Error("Login failed");
     }
   };
