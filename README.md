@@ -8,6 +8,8 @@ If you want to skip registration, you can log in using this demo account:
 
 VoyagePlanner is a feature-rich, full-stack travel planning application. It allows users to create accounts, search for destinations using the Google Maps API, and dynamically organize their upcoming trips and itineraries.
 
+**[Check out the Live App Here!](https://voyageplanner.vercel.app/)**
+
 ---
 
 ## Features
@@ -35,7 +37,7 @@ VoyagePlanner is a feature-rich, full-stack travel planning application. It allo
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 voyageplanner/
@@ -44,7 +46,6 @@ voyageplanner/
 │   │   ├── components/     # Reusable UI components
 │   │   ├── context/        # Auth & Trip Global Contexts
 │   │   ├── pages/          # View Pages (Login, SignUp, Dashboard)
-│   │   └── styles/         # SASS stylesheets
 │   └── .env.example        # Frontend environment template
 │
 └── server/                 # Node.js Express Backend
