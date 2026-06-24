@@ -66,13 +66,14 @@ function DestinationProvider({ children }) {
     { autocomplete, isLoading, query, currentDestination, lat, lng },
     dispatch,
   ] = useReducer(reducer, initialState);
+  const BASE_SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
   useEffect(() => {
     const fetchAutocomplete = async () => {
       dispatch({ type: "loading" });
       try {
         const res = await fetch(
-          `https://voyageplanner-server.vercel.app/api/googleMapsApi/destinations?input=${query}`
+          `${BASE_SERVER_URL}/api/googleMapsApi/destinations?input=${query}`
         );
         const data = await res.json();
         dispatch({ type: "autocomplete/loaded", payload: data.predictions });
@@ -90,7 +91,7 @@ function DestinationProvider({ children }) {
     dispatch({ type: "loading" });
     try {
       const res = await fetch(
-        `https://voyageplanner-server.vercel.app/api/googleMapsApi/destination?id=${id}`
+        `${BASE_SERVER_URL}/api/googleMapsApi/destination?id=${id}`
       );
       const data = await res.json();
       dispatch({ type: "destination/loaded", payload: data.result });
@@ -106,7 +107,7 @@ function DestinationProvider({ children }) {
     dispatch({ type: "loading" });
     try {
       const res = await fetch(
-        `https://voyageplanner-server.vercel.app/api/googleMapsApi/location?id=${id}`
+        `${BASE_SERVER_URL}/api/googleMapsApi/location?id=${id}`
       );
       const data = await res.json();
       dispatch({

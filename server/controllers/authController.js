@@ -8,7 +8,7 @@ const signToken = (id) => {
   });
 };
 
-exports.signup = async (req, res, next) => {
+exports.signup = async (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
 
   try {

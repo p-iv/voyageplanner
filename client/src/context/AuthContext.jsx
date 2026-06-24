@@ -35,11 +35,12 @@ function AuthProvider({ children }) {
   const [{ isLoading }, dispatch] = useReducer(reducer, initialState);
   const { fetchTrips } = useTrip();
   const navigate = useNavigate();
+  const BASE_SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
   const signUp = async (user) => {
     try {
       const res = await fetch(
-        "https://voyageplanner-server.vercel.app/api/users/signup",
+        `${BASE_SERVER_URL}/api/users/signup`,
         {
           method: "POST",
           headers: {
@@ -66,7 +67,7 @@ function AuthProvider({ children }) {
     }
     try {
       const res = await fetch(
-        "https://voyageplanner-server.vercel.app/api/users/login",
+        `${BASE_SERVER_URL}/api/users/login`,
         {
           method: "POST",
           headers: {

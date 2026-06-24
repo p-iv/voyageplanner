@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { DestinationProvider } from "./context/DestinationContext";
 import { PlaceProvider } from "./context/PlaceContext";

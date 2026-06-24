@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import AppNav from "../components/AppNav";
 import styles from "./HomePage.module.scss";
-import { useAuth } from "../context/AuthContext";
 
 function HomePage() {
   const user = localStorage.getItem("user");

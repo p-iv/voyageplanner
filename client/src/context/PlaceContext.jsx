@@ -54,13 +54,14 @@ function reducer(state, action) {
 function PlaceProvider({ children }) {
   const [{ places, currentPlace, isLoading, location, filter }, dispatch] =
     useReducer(reducer, initialState);
+  const BASE_SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
   useEffect(() => {
     const fetchPlaces = async () => {
       dispatch({ type: "loading" });
       try {
         const res = await fetch(
-          `https://voyageplanner-server.vercel.app/api/googleMapsApi/places?lat=${location.lat}&lng=${location.lng}&type=${filter}`
+          `${BASE_SERVER_URL}/api/googleMapsApi/places?lat=${location.lat}&lng=${location.lng}&type=${filter}`
         );
         const data = await res.json();
         dispatch({ type: "places/loaded", payload: data.results });
@@ -79,7 +80,7 @@ function PlaceProvider({ children }) {
     dispatch({ type: "loading" });
     try {
       const res = await fetch(
-        `https://voyageplanner-server.vercel.app/api/googleMapsApi/place?id=${id}`
+        `${BASE_SERVER_URL}/api/googleMapsApi/place?id=${id}`
       );
       const data = await res.json();
       dispatch({ type: "place/loaded", payload: data.result });

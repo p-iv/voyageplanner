@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
+
 const NewTripContext = createContext();
 
 const initialState = {
@@ -102,13 +103,14 @@ function NewTripProvider({ children }) {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
+  const BASE_SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
   const fetchTrips = async () => {
     const token = localStorage.getItem("token");
 
     try {
       const res = await fetch(
-        "https://voyageplanner-server.vercel.app/api/trips",
+        `${BASE_SERVER_URL}/api/trips`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -129,7 +131,7 @@ function NewTripProvider({ children }) {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        "https://voyageplanner-server.vercel.app/api/trips",
+        `${BASE_SERVER_URL}/api/trips`,
         {
           method: "POST",
           headers: {
@@ -151,7 +153,7 @@ function NewTripProvider({ children }) {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `https://voyageplanner-server.vercel.app/api/trips/${id}`,
+        `${BASE_SERVER_URL}/api/trips/${id}`,
         {
           method: "DELETE",
           headers: {
