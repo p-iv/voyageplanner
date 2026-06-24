@@ -10,14 +10,17 @@ const tripRouter = require("./routes/tripRoutes");
 const userRouter = require("./routes/userRoutes");
 
 const app = express();
-// const corsOptions = {
-//   origin: "https://voyageplanner.vercel.app",
-//   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
-//   credentials: true,
-// };
-//
-// app.use(cors(corsOptions));
-app.use(cors());
+const corsOptions = {
+  origin: function (origin, callback) {
+    callback(null, true);
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+  credentials: true, // Absolutely required for AuthContext / login systems
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
