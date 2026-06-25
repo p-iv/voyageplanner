@@ -15,6 +15,7 @@ exports.getAllTrips = async (req, res) => {
     res.status(404).json({
       status: "fail",
       message: "No trips found",
+      error: err.message,
     });
   }
 };

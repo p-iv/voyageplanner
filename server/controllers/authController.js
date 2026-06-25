@@ -2,9 +2,12 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const AppError = require("../utils/appError");
 
+const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN;
+
 const signToken = (id) => {
-  return jwt.sign({ id: id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
+  return jwt.sign({ id: id }, JWT_SECRET, {
+    expiresIn: JWT_EXPIRES_IN,
   });
 };
 
@@ -36,7 +39,8 @@ exports.signup = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       status: "fail",
-      message: err.message,
+      message: "failed to register",
+      error: err.message,
     });
   }
 };
@@ -64,7 +68,8 @@ exports.login = async (req, res, next) => {
   } catch (err) {
     res.status(400).json({
       status: "fail",
-      message: err.message,
-    })
+      message: "failed to login",
+      error: err.message,
+    });
   }
 };

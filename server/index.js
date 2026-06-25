@@ -15,7 +15,7 @@ const corsOptions = {
     callback(null, true);
   },
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
-  credentials: true, // Absolutely required for AuthContext / login systems
+  credentials: true,
   optionsSuccessStatus: 200
 };
 
@@ -34,7 +34,7 @@ dns.setServers(["1.1.1.1", "8.8.8.8"])
 mongoose
   .connect(process.env.DATABASE)
   .then(() => console.log("DB connection successful"))
-    .catch((err) => console.log(`Dtabase error ${err}`));
+    .catch((err) => console.log(`Database error ${err}`));
 
 const port = 3001;
 app.listen(port, () => {
